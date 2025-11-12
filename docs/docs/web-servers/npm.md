@@ -75,9 +75,12 @@ From the Dashboard, click on ‘Proxy Hosts’ and in the following screen click
     
     * Some applications require having Websockets Support enabled for the site to work properly, so be sure to review the application’s documentation for setting up a reverse proxy.
 
-    * Example configuration:
-
-        ![alt text](images/npm-details-tab.png)
+    <figure markdown>
+    ![alt text](images/npm-details-tab.png){ width="80%" }
+    <figcaption markdown class="annotate">
+    Example configuration
+    </figcaption>
+    </figure>
 
 === "SSL"
 
@@ -87,9 +90,12 @@ From the Dashboard, click on ‘Proxy Hosts’ and in the following screen click
     
     * Agree to the Let’s Encrypt ToS and click **Save** to generate the new SSL certificate and create the new proxy host.
 
-    * Example configuration:
-
-        ![alt text](images/npm-ssl-tab.png)
+    <figure markdown>
+    ![alt text](images/npm-ssl-tab.png){ width="80%" }
+    <figcaption markdown class="annotate">
+    Example configuration
+    </figcaption>
+    </figure>
 
 Verify that the entered information is correct and click **Save**.
 
@@ -98,7 +104,7 @@ Verify that the entered information is correct and click **Save**.
 
     ![alt text](images/npm-success01.png)
 
-    Notice that you did not receive a warning from your browser about accessing an insecure HTTP website and that there is now a padlock symbol to the left of the URL:
+    Notice that you did not receive a warning from your browser about accessing an insecure HTTP website and that there is now a **padlock** symbol to the left of the URL:
 
     ![alt text](images/npm-success02.png)
 

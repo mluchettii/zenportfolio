@@ -118,7 +118,7 @@ These checks ensure that the system is compliant with CIS standards, and include
 Clicking on a control test expands a panel showing the rationale for the control, how to remediate it, a description of the policy setting, and other information. Here, you can see the registry values that were checked, and how to remediate the failed control check by creating specific entries in the Windows Registry Editor:
 
 <figure markdown>
-![alt text](images/wazuh-control-check.png){: style="width:50%;" }
+![alt text](images/wazuh-control-check.png#center){: style="width:50%;" }
 <figcaption markdown class="annotate">
 CIS Windows 11 control check details
 </figcaption>
@@ -131,7 +131,7 @@ Go back to **Endpoints** and click on a Linux agent. Look over the CIS Benchmark
 <figure markdown>
 ![alt text](images/wazuh-control-check-linux.png){: style="width:50%;" }
 <figcaption markdown class="annotate">
-Failed check: ***Ensure login and logout events are collected**
+Failed check: **Ensure login and logout events are collected**
 </figcaption>
 </figure>
 
