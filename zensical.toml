@@ -19,7 +19,7 @@ dev_addr = "127.0.0.1:7985"
 # meaningful description of the site content for use by search engines.
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_description
-site_description = "A new project generated from the default template project."
+site_description = "Personal portfolio site built with Zensical, showcasing projects, skills, and background with a clean, fast, and customizable static site."
 
 # The site_author attribute. This is used in the HTML head element.
 #
@@ -202,7 +202,7 @@ features = [
     # Turn on this feature to expand all collapsible sections in the
     # navigation sidebar by default.
     # https://zensical.org/docs/setup/navigation/#navigation-expansion
-    "navigation.expand",
+    # "navigation.expand",
 
     # This feature turns on navigation elements in the footer that allow the
     # user to navigate to a next or previous page.
