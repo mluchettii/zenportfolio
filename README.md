@@ -1,6 +1,6 @@
 # Portfolio Website
 
-This is my personal portfolio website written entirely in Markdown and built using the [Zensical](https://github.com/mluchettii/zensical) static site generator. It showcases my projects, skills, and background in a clean and modern static site.
+This is my personal portfolio website written entirely in Markdown and built using the [Zensical](https://github.com/zensical/zensical) static site generator. It showcases my projects, skills, and background in a clean and modern static site.
 
 ## Features
 
