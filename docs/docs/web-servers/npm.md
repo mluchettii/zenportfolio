@@ -85,16 +85,16 @@ From the Dashboard, click on ‘Proxy Hosts’ and in the following screen click
     
     * As for DNS challenge, select your DNS provider and paste in the API token that you obtained from them.
     
-    * Agree to the Let’s Encrypt ToS and click 'Save' to generate the new SSL certificate and create the new proxy host.
+    * Agree to the Let’s Encrypt ToS and click **Save** to generate the new SSL certificate and create the new proxy host.
 
     * Example configuration:
 
         ![alt text](images/npm-ssl-tab.png)
 
-Verify that the entered information is correct and click 'Save'.
+Verify that the entered information is correct and click **Save**.
 
 !!! success "Result"
-    If successful, the 'Status' of the new proxy host will be 'Online'. Click the Source URL to access your application:
+    If successful, the **Status** of the new proxy host will be **Online**. Click the Source URL to access your application:
 
     ![alt text](images/npm-success01.png)
 

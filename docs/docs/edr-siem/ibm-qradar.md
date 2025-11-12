@@ -15,7 +15,7 @@ tags:
 
 [**IBM QRadar**](https://www.ibm.com/products/qradar-siem) is a comprehensive threat detection and response solution designed to help security teams efficiently manage and respond to security incidents. It operates as a Security Information and Event Management (SIEM) platform that collects, processes, aggregates, and stores network data in real-time to provide visibility into network security, generate alerts, and manage offenses for threat detection and prioritization.
 
-The data that it collects includes event data (user logins, email activity, firewall denials) and flow data (network session information between hosts) from the network through devices called connectors. The raw data is normalized into a structured format usable for analysis. The collected data is then analyzed by a Custom Rules Engine that detects security offenses and alerts, then stores the data. The processed data is accessible via the QRadar Console for searches, analysis, reporting, and alerting. The web console provides a user interface for managing security tasks and investigations. For those who want to practice using this SIEM, the [QRadar Community Edition](https://www.ibm.com/community/101/qradar/ce/) (CE) is available for free.
+The data that it collects includes event data (user logins, email activity, firewall denials) and flow data (network session information between hosts) from the network through devices called connectors. The raw data is normalized into a structured format usable for analysis. The collected data is then analyzed by a Custom Rules Engine that detects security offenses and alerts, then stores the data. The processed data is accessible via the QRadar Console for searches, analysis, reporting, and alerting. The web console provides a user interface for managing security tasks and investigations. For those who want to practice using this SIEM, the [QRadar Community Edition (CE)](https://www.ibm.com/community/101/qradar/ce/) is available for free.
 
 ## QRadar CE server setup
 
@@ -23,11 +23,11 @@ This will cover how to install QRadar CE on a standalone virtual machine.
 
 1. Create a new virtual machine that follows the required specifications:
 
-    * Memory: min. 16-24 GB
-    * Disk space: min. 200 GB
-    * CPU: 4/6 cores
-    * Network adapter: Bridge
-    * Disc image: [QRadar CE](https://www.ibm.com/community/101/qradar/ce/)
+    * Memory: min. **16-24 GB**
+    * Disk space: min. **200 GB**
+    * CPU: **4/6 cores**
+    * Network adapter: **Bridge**
+    * Disc image: [**QRadar ISO**](https://www.ibm.com/community/101/qradar/ce/)
 
 2. Start the VM and wait until you are prompted to enter *halt*, *reboot*, *flatten*, or *wipe*. Choose **flatten** to install.
 
@@ -47,15 +47,15 @@ This will cover how to install QRadar CE on a standalone virtual machine.
 
     ??? info "Example network configuration"
 
-        * Hostname: qradar.local
+        * **Hostname**: qradar.local
 
-        * IP Address: 192.168.1.77
+        * **IP Address**: 192.168.1.77
 
-        * Network Mask: 255.255.255.0
+        * **Network Mask**: 255.255.255.0
 
-        * Gateway: 192.168.1.1 (IP address of your router)
+        * **Gateway**: 192.168.1.1 (IP address of your router)
 
-        * Primary DNS: 8.8.8.8
+        * **Primary DNS**: 8.8.8.8
 
 10. Finish the installation. Access the QRadar CE Console on your browser by connecting to the server's IP address.
 
