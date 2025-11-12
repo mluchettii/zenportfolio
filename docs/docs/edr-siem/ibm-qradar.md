@@ -287,9 +287,21 @@ QRadar rules are logic conditions applied to events, flows, or offenses to detec
 
 10. Review the rule summary before it gets deployed and click **Finish**. If needed, you can access this rule from the Offenses tab.
 
-    ??? info "Rule A summary"
+    ??? info "Rule A test criteria"
 
-        ![alt text](images/qradar-rule-sum-a.png#center)
+        <figure markdown>
+        ![alt text](images/qradar-rule-cri-a.png#center){.shadowed-image style="width: 58%;"}
+        </figure>
+
+    ??? example "Rule A summary"
+
+        <figure markdown>
+        ![alt text](images/qradar-rule-sum-a.png#center){.shadowed-image style="width: 90%;"}
+        </figure>
+
+    !!! note "Rule A test explained"
+
+        When a specific event QID is found, then an offense will be generated.
 
 #### Rule B: Authentication failure after five attempts
 
@@ -297,11 +309,15 @@ QRadar rules are logic conditions applied to events, flows, or offenses to detec
 
     ??? info "Rule B test criteria"
 
-        ![alt text](images/qradar-rule-cri-b.png#center)
+        <figure markdown>
+        ![alt text](images/qradar-rule-cri-b.png#center){.shadowed-image style="width: 90%;"}
+        </figure>
+        
+    ??? example "Rule B summary"
 
-    ??? info "Rule B summary"
-
-        ![alt text](images/qradar-rule-sum-b.png#center)
+        <figure markdown>
+        ![alt text](images/qradar-rule-sum-b.png#center){.shadowed-image style="width: 90%;"}
+        </figure>
 
     !!! note "Rule B test explained"
 

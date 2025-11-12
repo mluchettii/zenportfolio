@@ -43,19 +43,17 @@ There are three ways you can enroll users in your Duo environment: manual enroll
 
 3. Click on **Edit Global Policy -> New User Policy**. Ensure that **Require enrollment** is enabled.
 
-    !!! info "Inline self-enrollment"
+!!! info "Inline self-enrollment"
 
-        This allows users who do not exist in Duo to be created dynamically when they first access the protected application. Once enrollment is complete, the user can then access the protected app.
+    This allows users who do not exist in Duo to be created dynamically when they first access the protected application. Once enrollment is complete, the user can then access the protected app.
 
 ### Automatic enrollment
 
 Setting up automatic enrollment involves preparing a user list in the form of a CSV file and importing it into Duo. Whereas the 'Bulk Enroll Users' tool is limited to containing only email addresses and usernames, CSV import values can include username aliases, email addresses, full names, groups, notes, and multiple phones or mobile devices. Once imported, the users are created immediately and can be managed from the Duo Admin Panel.
 
 <figure markdown>
-![alt text](images/duo-csv-01.png){: style="width:100%;" }
-<figcaption markdown class="annotate">
-Properly formatted CSV file
-</figcaption>
+![alt text](images/duo-csv-01.png#center){.shadowed-image style="width: 100%;"}
+<figcaption markdown class="annotate">Properly formatted CSV file</figcaption>
 </figure>
 
 Import your users:
