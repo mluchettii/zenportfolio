@@ -1,0 +1,58 @@
+/* Center image */
+img[src*='#center'] {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* HOMEPAGE GRID */
+.homepage {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* left bio, right grid */
+  gap: 2rem;
+  margin-top: 1rem;
+  align-items: stretch; /* equal height columns */
+}
+
+/* LEFT BIO CARD */
+.bio-card {
+  height: 100%; /* match right grid */
+}
+
+.bio-card__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertically center content */
+  height: 100%;
+}
+
+/* RIGHT 2x2 GRID CARDS */
+.info-cards {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1.25rem;
+  height: 100%; /* fill parent height */
+}
+
+/* Each card inside the grid fills its grid cell */
+.info-cards > ul > li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .homepage {
+    grid-template-columns: 1fr;
+  }
+  .info-cards {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .bio-card,
+  .bio-card__inner {
+    height: auto;
+  }
+}
