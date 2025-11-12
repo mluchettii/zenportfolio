@@ -31,6 +31,10 @@ site_author = "Marcos Luchetti"
 # Read more: https://zensical.org/docs/setup/basics/#site_url
 site_url = "https://mluchetti.com/"
 
+# GitHub repository
+repo_url = "https://github.com/mluchettii/zenportfolio"
+repo_name = "mluchettii/zenportfolio"
+
 # The copyright notice appears in the page footer and can contain an HTML
 # fragment.
 #
