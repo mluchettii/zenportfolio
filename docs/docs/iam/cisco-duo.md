@@ -52,9 +52,9 @@ There are three ways you can enroll users in your Duo environment: manual enroll
 Setting up automatic enrollment involves preparing a user list in the form of a CSV file and importing it into Duo. Whereas the 'Bulk Enroll Users' tool is limited to containing only email addresses and usernames, CSV import values can include username aliases, email addresses, full names, groups, notes, and multiple phones or mobile devices. Once imported, the users are created immediately and can be managed from the Duo Admin Panel.
 
 <figure markdown>
-![alt text](images/duo-csv-01.png){: style="width:75%;" }
+![alt text](images/duo-csv-01.png){: style="width:100%;" }
 <figcaption markdown class="annotate">
-Properly formatted CSV file (click to expand)
+Properly formatted CSV file
 </figcaption>
 </figure>
 
@@ -76,7 +76,7 @@ Make sure you have enrolled your user from this machine and that they are ready 
 
 3. Update the **User access** setting to grant access to this application to all users.
 
-4. Set the **New User Policy** for the Microsoft RDP application to **Deny Access* so that no unenrolled user can complete Duo enrollment via this application.
+4. Set the **New User Policy** for the Microsoft RDP application to **Deny Access** so that no unenrolled user can complete Duo enrollment via this application.
 
 5. Download and launch the Duo Authentication for Windows Logon [installer package](https://dl.duosecurity.com/duo-win-login-latest.exe).
 
