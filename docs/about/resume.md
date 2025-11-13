@@ -1,4 +1,4 @@
-# [:lucide-file-text:](pdf/Luchetti-Marcos-Resume.pdf) Resume
+# [:lucide-download:](pdf/Luchetti-Marcos-Resume.pdf) Resume
 
 ---
 
@@ -16,7 +16,7 @@ Driven Cybersecurity Intern experienced in integrating and managing diverse syst
     <em>Zolon Tech, Inc.</em>
   </div>
   <div style="align-self: flex-start;">
-    <em>2025</em>
+    <em>June 2025 - Present</em>
   </div>
 </div>
 
