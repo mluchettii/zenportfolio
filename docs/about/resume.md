@@ -1,6 +1,5 @@
 # [:lucide-file-text:](pdf/Luchetti-Marcos-Resume.pdf) Resume
 
-
 ---
 
 ## Summary
