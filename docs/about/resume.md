@@ -13,7 +13,7 @@ Driven Cybersecurity Intern experienced in integrating and managing diverse syst
 <div style="display: flex; justify-content: space-between; align-items: flex-start;">
   <div style="display: flex; flex-direction: column; align-items: flex-start;">
     <strong>Cybersecurity Intern</strong>
-    <em>Zolon Tech, Inc.</em>
+    <em>Zolon Tech Inc.</em>
   </div>
   <div style="align-self: flex-start;">
     <em>June 2025 - Present</em>
