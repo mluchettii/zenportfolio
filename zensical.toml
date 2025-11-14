@@ -53,19 +53,21 @@ Copyright &copy; 2025 Marcos Luchetti
 nav = [
   { "Home" = "index.md" },
   { "About" = [
-      { "About Me" = "about/me.md" },
-      { "Resume" = "about/resume.md" }
+      { "About me" = "about/me.md" },
+      { "My setup" = "about/setup.md" },
+      { "Resume" = "about/resume.md" },
+      { "Site progress" = "about/progress.md" }
   ]},
   { "Blog" = "blog/index.md" },
   { "Documentation" = [
-      { "Setup" = "docs/setup.md" },
+    #   { "Setup" = "docs/setup.md" },
       { "EDR/SIEM" = [
           { "CrowdStrike Falcon" = "docs/edr-siem/crowdstrike-falcon.md" },
           { "IBM QRadar" = "docs/edr-siem/ibm-qradar.md" },
           { "Wazuh" = "docs/edr-siem/wazuh.md" }
       ]},
       { "IAM" = [
-          { "Duo" = "docs/iam/cisco-duo.md" }
+          { "Cisco Duo" = "docs/iam/cisco-duo.md" }
       ]},
       { "Remote Desktop" = [
           { "RustDesk" = "docs/remote-desktop/rustdesk.md" }

@@ -160,7 +160,7 @@ Driven Cybersecurity Intern experienced in integrating and managing diverse syst
 </div>
 
 - Analyzed malicious network traffic using `Wireshark` for threat detection.  
-- Performed network attacks using Metasploit and explored various attack vectors.  
+- Performed network attacks using `Metasploit` and explored various attack vectors.  
 - Utilized password-cracking tools such as `John the Ripper`, `Cain and Abel`, and `aircrack-ng`.  
 - Ran vulnerability scans on subnets with `Nessus`, used `Nmap` for network reconnaissance.  
 

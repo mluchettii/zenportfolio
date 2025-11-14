@@ -35,7 +35,7 @@ hide:
 
     ---
 
-    Get to know me, my background, and skills  
+    Learn about me, explore my resume, and see the setup that supports my work and projects.  
     [:octicons-arrow-right-24: Learn more](about/me.md)
 
 -   :material-text-box-multiple:{ .lg .middle } __Blog__
@@ -52,7 +52,7 @@ hide:
     ---
 
     Technical notes, tutorials, and project docs  
-    [:octicons-arrow-right-24: Explore docs](docs/setup.md)
+    [:octicons-arrow-right-24: Explore docs](docs/edr-siem/crowdstrike-falcon.md)
 
 -   :material-label:{ .lg .middle } __Skills__
 
