@@ -2,7 +2,7 @@
 
 <!-- HTML -->
 <div class="zensical-progress-container">
-  <div class="zensical-progress-bar" style="width: 30.8%;">30.8%</div>
+  <div class="zensical-progress-bar" style="width: 38.2%;">38.2%</div>
 </div>
 
 ### Home
@@ -27,6 +27,9 @@
 - [ ] Cloud
     * [ ] Cloudflare
     * [ ] DigitalOcean
+- [ ] Compliance Scanners
+    * [ ] OpenSCAP
+    * [ ] SCAP Compliance Checker
 - [ ] Containers
     * [ ] Docker
 - [x] EDR/SIEM
@@ -41,10 +44,8 @@
     * [x] Oracle VirtualBox
     * [ ] Proxmox
 - [ ] Vulnerability Scanners
-    * [ ] Nessus
-    * [ ] OpenVAS
-    * [ ] OpenSCAP
-    * [ ] SCAP Compliance Checker
+    * [ ] Greenbone OpenVAS
+    * [x] Tenable Nessus
 - [x] Web Servers
     * [x] Caddy
     * [x] Nginx Proxy Manager
