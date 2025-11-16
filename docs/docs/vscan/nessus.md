@@ -97,7 +97,7 @@ Log in to Nessus. A new **Welcome to Nessus** page will appear, prompting you to
 
         The selected hosts count towards the 16 host limit on the Nessus Essentials license.
 
-3. Now wait for the **Basic Network Scan** to complete. Once finished, you can click on a host to view its vulnerabilities.
+3. Now wait for the **Basic Network Scan** to complete. Once finished, click on the host with the most vulnerabilities and you will see a list of vulnerabilities ranked from **Low** to **Critical** severity. Some tests are marked as **Info** for 'informational'.
 
 These are my scan results:
 
@@ -106,9 +106,9 @@ These are my scan results:
     ![alt text](images/nessus-scan-01.png#center){.shadowed-image style="width: 90%;"}
     </figure>
 
-## Vulnerability analysis
+## Vulnerability analysis (Blog)
 
-Click on the host with the most vulnerabilities and you will see a list of vulnerabilities ranked from **Low** to **Critical** severity. Some tests are marked as **Info** for 'informational'.
+This is more of a blog entry/demo than proper documentation. I will keep it here until the Zensical team adds the blogging feature.
 
 ### Vulnerability A: Outdated Apache version
 
@@ -267,7 +267,7 @@ Since I found the Syncthing Docker container as the root cause, I manually updat
 
     3. Under the **Image Configuration** section, change the image's release tag from what is currently installed to a more updated version. If you are not specific on the version that you want, type in `:latest`. If the image is already using the `:latest` tag, then proceed to step 4.
 
-    4. Scroll down and click **Deploy the container**. This will pull remove the old container and deploy a replacement using the version of the Docker image you have set, keeping the configuration intact.
+    4. Scroll down and click **Deploy the container**. This will redeploy the container using the version of the Docker image you have set, keeping the configuration intact.
 
 Surprisingly, the same vulnerability was detected again, meaning the JQuery library was not updated. I tried a different approach, this time changing the Docker image repo from the LinuxServer.io one to the official one offered by Syncthing (`syncthing/syncthing:latest`), and deployed it as a brand new container.
 
