@@ -1,4 +1,4 @@
-# [:lucide-download:](pdf/Luchetti-Marcos-Resume.pdf) Resume
+# Resume
 
 ---
 

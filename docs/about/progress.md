@@ -5,6 +5,8 @@
   <div class="zensical-progress-bar" style="width: 38.2%;">38.2%</div>
 </div>
 
+---
+
 ### Home
 
 - [x] Homepage
