@@ -273,7 +273,7 @@ Surprisingly, the same vulnerability was detected again, meaning the JQuery libr
 
 The result was the same, so I did further research on the project's GitHub Issues page and came across this [posting](https://github.com/syncthing/syncthing/issues/10051). It turns out that Syncthing has multiple outdated JavaScript libraries that need updating. Therefore, if I want this vulnerability to disappear, then all I can do is wait for the library to be updated, or use a different file synchronization tool.  
 
-All in all, the risk of this XSS vulnerability is only moderate, and only exploitable in specific attack scenarios requiring prior access. To mitigate this risk, I enabled HTTPS, set a complex password for the web console, and ensured that no sensitive files will be used by this application.
+All in all, the risk of this XSS vulnerability is only moderate, and only exploitable in specific attack scenarios requiring prior access. To mitigate this risk, I enabled HTTPS and set a complex password in the Syncthing web console.
 
 My vulnerability report:
 

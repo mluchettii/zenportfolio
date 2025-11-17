@@ -39,5 +39,5 @@ Lastly, the host-only network mode is used creates a private network exclusively
 
 <figure markdown>
 ![alt text](images/vbox-portforward.png#center){.shadowed-image style="width: 100%;"}
-<figcaption markdown class="annotate">Example</figcaption>
+<figcaption markdown class="annotate">Example VirtualBox port forwarding configuration</figcaption>
 </figure>
