@@ -4,7 +4,11 @@
 
 ## Summary
 
-Driven Cybersecurity Intern experienced in integrating and managing diverse systems spanning cybersecurity, cloud platforms, networking, and automation. Proficient in designing and optimizing secure, scalable environments leveraging virtualization, containerization, and advanced security tools. Demonstrates a strategic approach to problem-solving, process improvement, and collaboration across technical disciplines. Passionate about continuous learning and applying innovative solutions to meet evolving organizational needs.
+Cybersecurity Intern with hands-on experience in lab environments, applying practical skills in threat detection,
+vulnerability management, and security tool deployment. Proficient with industry tools like IBM QRadar,
+CrowdStrike, and Nessus through projects simulating real-world scenarios. Strong foundational knowledge in
+zero-trust architectures, SIEMs, and automation. Passionate about continuous learning in cybersecurity and IT,
+with a growing interest in DevOps and cloud-native technologies
 
 ---
 
