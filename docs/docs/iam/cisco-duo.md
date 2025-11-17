@@ -2,8 +2,8 @@
 tags:
     - Cisco Duo
     - IAM
-    - Security
     - MFA
+    - Security
     - Windows
 ---
 

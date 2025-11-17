@@ -1,12 +1,12 @@
 ---
 tags:
     - IBM QRadar
-    - SIEM
+    - Linux
     - Security
+    - SIEM
+    - Syslog
     - Virtualization
     - Windows
-    - Linux
-    - Syslog
 ---
 
 # IBM QRadar

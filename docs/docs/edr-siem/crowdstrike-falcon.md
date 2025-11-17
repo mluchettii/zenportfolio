@@ -1,14 +1,15 @@
 ---
 tags:
+    - ANY.RUN
     - CrowdStrike Falcon
     - EDR
-    - Triage
-    - Security
-    - Virtualization
-    - Windows
     - Linux
+    - OSINT
+    - Security
+    - Triage
+    - Virtualization
     - VirusTotal
-    - ANY.RUN
+    - Windows
 ---
 
 # CrowdStrike Falcon

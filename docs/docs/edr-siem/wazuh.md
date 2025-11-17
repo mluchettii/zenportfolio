@@ -1,13 +1,13 @@
 ---
 tags:
-    - Wazuh
-    - SIEM
-    - XDR
-    - Security
-    - Virtualization
-    - Windows
-    - Linux
     - CIS Benchmarks
+    - Linux
+    - Security
+    - SIEM
+    - Virtualization
+    - Wazuh
+    - Windows
+    - XDR
 ---
 
 # Wazuh

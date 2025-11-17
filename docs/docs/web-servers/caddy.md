@@ -1,12 +1,12 @@
 ---
 tags:
     - Caddy
-    - Web Servers
     - Cloudflare
     - Containerization
     - Docker
-    - SSL
     - Let's Encrypt
+    - SSL
+    - Web Servers
 ---
 
 # Caddy

@@ -1,11 +1,11 @@
 ---
 tags:
+    - Containerization
+    - Docker
+    - Linux
+    - Security
     - Tenable Nessus
     - Vulnerability Scanners
-    - Security
-    - Docker
-    - Containerization
-    - Linux
 ---
 
 # Tenable Nessus
@@ -106,7 +106,7 @@ These are my scan results:
     ![alt text](images/nessus-scan-01.png#center){.shadowed-image style="width: 90%;"}
     </figure>
 
-## Vulnerability analysis (Blog)
+## Vulnerability analysis and remediation (Blog)
 
 The following is more of a blog entry/demo than proper documentation. I will keep it here until the blogging feature gets added to Zensical.
 

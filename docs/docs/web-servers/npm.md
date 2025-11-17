@@ -1,12 +1,12 @@
 ---
 tags:
-    - Nginx Proxy Manager
-    - Web Servers
     - Cloudflare
     - Containerization
     - Docker
-    - SSL
     - Let's Encrypt
+    - Nginx Proxy Manager
+    - SSL
+    - Web Servers
 ---
 
 # Nginx Proxy Manager
