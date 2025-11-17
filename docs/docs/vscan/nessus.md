@@ -108,7 +108,7 @@ These are my scan results:
 
 ## Vulnerability analysis (Blog)
 
-This is more of a blog entry/demo than proper documentation. I will keep it here until the Zensical team adds the blogging feature.
+The following is more of a blog entry/demo than proper documentation. I will keep it here until the blogging feature gets added to Zensical.
 
 ### Vulnerability A: Outdated Apache version
 
@@ -155,7 +155,7 @@ This is more of a blog entry/demo than proper documentation. I will keep it here
     | :--------------| :----------- |
     | 8749 / tcp / www| 192.168.1.14|
 
-From the vulnerability details, it seems like there is an application using an outdated version of Apache. For this vulnerability, the attack vectors include HTTP response splitting and Server-Side Request Forgery (SSRF). To investigate this further, I checked what application uses TCP port `8749` on the host:
+From the vulnerability details, it appeared there was an application using an outdated version of Apache. For this vulnerability, the attack vectors include HTTP response splitting and Server-Side Request Forgery (SSRF). To investigate this further, I checked what application was using TCP port `8749` on the host:
 
 ```sh
 $ sudo ss -tulnp | grep :8749  
@@ -255,7 +255,7 @@ $ sudo docker ps --format '{{.ID}} {{.Names}} {{.Ports}}' | grep 8384
 3e08c688b427 syncthing 0.0.0.0:8384->8384/tcp, 0.0.0.0:21027->21027/udp, [::]:8384->8384/tcp, [::]:21027->21027/udp, 0.0.0.0:22000->22000/tcp, [::]:22000->22000/tcp, 0.0.0.0:22000->22000/udp, [::]:22000->22000/udp
 ```
 
-Since I found the Syncthing Docker container as the root cause, I manually updated it (referring to the latest version listed on its Docker Hub repository), and then rescanned to confirm the remediation.
+After determining the Syncthing Docker container as the root cause, I manually updated it (referring to the latest version listed on its Docker Hub repository), and then rescanned the host to confirm the remediation.
 
 ??? note "Manual Docker container update (Portainer method)"
 
@@ -265,13 +265,13 @@ Since I found the Syncthing Docker container as the root cause, I manually updat
 
     2. Click on the container you want to update. Then, click on **Duplicate/Edit**.
 
-    3. Under the **Image Configuration** section, change the image's release tag from what is currently installed to a more updated version. If you are not specific on the version that you want, type in `:latest`. If the image is already using the `:latest` tag, then proceed to step 4.
+    3. Under the **Image Configuration** section, change the image's release tag from what is currently installed to a more updated version. If you are not specific on the version that you want, type in `:latest`.
 
     4. Scroll down and click **Deploy the container**. This will redeploy the container using the version of the Docker image you have set, keeping the configuration intact.
 
 Surprisingly, the same vulnerability was detected again, meaning the JQuery library was not updated. I tried a different approach, this time changing the Docker image repo from the LinuxServer.io one to the official one offered by Syncthing (`syncthing/syncthing:latest`), and deployed it as a brand new container.
 
-The result was the same, so I did further research on the project's GitHub Issues page and came across [this](https://github.com/syncthing/syncthing/issues/10051). It turns out that Syncthing has multiple outdated JavaScript libraries that need updating. If I want this vulnerability to disappear, the only thing I can do is wait for the library to be updated, or switch to an alternative file synchronization tool.  
+The result was the same, so I did further research on the project's GitHub Issues page and came across this [posting](https://github.com/syncthing/syncthing/issues/10051). It turns out that Syncthing has multiple outdated JavaScript libraries that need updating. Therefore, if I want this vulnerability to disappear, then all I can do is wait for the library to be updated, or use a different file synchronization tool.  
 
 All in all, the risk of this XSS vulnerability is only moderate, and only exploitable in specific attack scenarios requiring prior access. To mitigate this risk, I enabled HTTPS, set a complex password for the web console, and ensured that no sensitive files will be used by this application.
 
@@ -331,11 +331,11 @@ Status: CLOSED | FALSE POSITIVE | AWAITING REMEDIATION
     | :--------------| :----------- |
     | 445 / tcp / cifs| 192.168.1.14|
 
-The last notable vulnerability that was discovered on this host was related to SMB signing. SMB signing is important because it ensures the integrity and authenticity of the data exchanged over the SMB protocol between clients and servers. This is a crucial security feature to protect network communications and shared data from interception and tampering.
+The final notable vulnerability that was discovered on this host was related to SMB signing. SMB signing is important because it ensures the integrity and authenticity of the data exchanged over the SMB protocol between clients and servers. This is a crucial security feature to protect network communications and shared data from interception and tampering.
 
-The remediation of this vulnerability involves enabling SMB signing on the Linux host's Samba share. I can do this by adding two lines under the `[global]` section of the host's `smb.conf` file:
+The remediation of this vulnerability involves enabling SMB signing on the Linux host's Samba share. I did this by adding two lines under the `[global]` section of the host's `smb.conf` file:
 
-```sh title="Open the Samba configuration file"
+```sh title="Open the Samba configuration file in a text editor"
 sudo nano /etc/samba/smb.conf
 ```
 
