@@ -2,7 +2,7 @@
 
 <!-- HTML -->
 <div class="zensical-progress-container">
-  <div class="zensical-progress-bar" style="width: 38.2%;">38.2%</div>
+  <div class="zensical-progress-bar" style="width: 40%;">40%</div>
 </div>
 
 ---
@@ -14,7 +14,6 @@
 ### About
 
 - [ ] About me
-- [x] Resume
 - [ ] My setup
 
 ### Blog

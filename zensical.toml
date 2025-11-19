@@ -55,7 +55,6 @@ nav = [
   { "About" = [
       { "About me" = "about/me.md" },
       { "My setup" = "about/setup.md" },
-      { "Resume" = "about/resume.md" },
       { "Site progress" = "about/progress.md" }
   ]},
   { "Blog" = "blog/index.md" },

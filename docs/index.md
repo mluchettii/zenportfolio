@@ -35,7 +35,7 @@ hide:
 
     ---
 
-    Learn about me, explore my resume, and see the setup that supports my work and projects.  
+    Learn about me and explore the setup that supports my work and projects.  
     [:octicons-arrow-right-24: Learn more](about/me.md)
 
 -   :material-text-box-multiple:{ .lg .middle } __Blog__
