@@ -88,11 +88,6 @@ nav = [
       ]}
   ]},
   { "Skills" = "skills.md" }
-  # { "User Guide" = [
-  #     { "Admonitions" = "user-guide/admonitions.md" },
-  #     { "Content Tabs" = "user-guide/content-tabs.md" },
-  #     { "Diagram Examples" = "user-guide/diagram-examples.md" }
-  # ]}
 ]
 
 # With the "extra_css" option you can add your own CSS styling to customize
