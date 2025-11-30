@@ -106,9 +106,7 @@ These are my scan results:
     ![alt text](images/nessus-scan-01.png#center){.shadowed-image style="width: 90%;"}
     </figure>
 
-## Vulnerability analysis and remediation (Blog)
-
-The following is more of a blog entry/demo than proper documentation. I will keep it here until the blogging feature gets added to Zensical.
+## Vulnerability analysis and remediation
 
 ### Vulnerability A: Outdated Apache version
 

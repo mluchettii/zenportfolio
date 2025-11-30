@@ -1,10 +1,5 @@
 # Site progress
 
-<!-- HTML -->
-<div class="zensical-progress-container">
-  <div class="zensical-progress-bar" style="width: 40%;">40%</div>
-</div>
-
 ---
 
 ### Home
@@ -37,8 +32,8 @@
     * [x] CrowdStrike Falcon
     * [x] IBM QRadar
 - [ ] IAM
-    * [x] Cisco Duo
     * [ ] Authentik
+    * [x] Cisco Duo
 - [x] Remote Desktop
     * [x] RustDesk
 - [ ] Virtualization

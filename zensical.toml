@@ -6,7 +6,7 @@
 #
 # ============================================================================
 
-[project]#
+[project]
 
 # The site_name is shown in the page header and the browser window title
 #
@@ -52,14 +52,13 @@ Copyright &copy; 2025 Marcos Luchetti
 # Read more: https://zensical.org/docs/setup/navigation/
 nav = [
   { "Home" = "index.md" },
-  { "About" = [
-      { "About me" = "about/me.md" },
-      { "My setup" = "about/setup.md" },
-      { "Site progress" = "about/progress.md" }
-  ]},
-  { "Blog" = "blog/index.md" },
+  # { "About" = [
+  #     { "About me" = "about/me.md" },
+  #     { "My setup" = "about/setup.md" },
+  #     { "Site progress" = "about/progress.md" }
+  # ]},
+  # { "Blog" = "blog/index.md" },
   { "Documentation" = [
-    #   { "Setup" = "docs/setup.md" },
     #   { "Compliance Scanners" = [
     #       { "OpenSCAP" = "docs/scap/oscap.md" },
     #       { "SCAP Compliance Checker" = "docs/scap/scc.md" }
@@ -87,7 +86,7 @@ nav = [
           { "Nginx Proxy Manager" = "docs/web-servers/npm.md" }
       ]}
   ]},
-  { "Skills" = "skills.md" }
+  # { "Skills" = "skills.md" }
 ]
 
 # With the "extra_css" option you can add your own CSS styling to customize

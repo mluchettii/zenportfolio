@@ -5,84 +5,11 @@ img[src*='#center'] {
     margin-right: auto;
 }
 
-/* HOMEPAGE GRID */
-.homepage {
-  display: grid;
-  grid-template-columns: 1fr 2fr; /* left bio, right grid */
-  gap: 2rem;
-  margin-top: 1rem;
-  align-items: stretch; /* equal height columns */
-}
-
-/* LEFT BIO CARD */
-.bio-card {
-  height: 100%; /* match right grid */
-}
-
-.bio-card__inner {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* vertically center content */
-  height: 100%;
-}
-
-/* RIGHT 2x2 GRID CARDS */
-.info-cards {
-  display: grid !important;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 1.25rem;
-  height: 100%; /* fill parent height */
-}
-
-/* Each card inside the grid fills its grid cell */
-.info-cards > ul > li {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .homepage {
-    grid-template-columns: 1fr;
-  }
-  .info-cards {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-  }
-  .bio-card,
-  .bio-card__inner {
-    height: auto;
-  }
-}
-
-/* DROP SHADOW FOR IMAGES */
+/* Box shadow effect (https://www.css3.info/preview/box-shadow/) */
 .shadowed-image {
-  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.18);
-  border-radius: 8px;
-}
-
-/* PROGRESS BAR */
-.zensical-progress-container {
-  width: 100%;
-  background-color: #1a1a2e; /* Dark background for dark mode */
-  border-radius: 12px;        /* Rounded corners */
-  height: 28px;
-  overflow: hidden;           /* Ensures inner bar can't overflow corners */
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.5); /* Optional subtle shadow */
-}
-
-.zensical-progress-bar {
-  height: 100%;
-  background: linear-gradient(90deg, #5c6ac4, #7892fe);
-  border-radius: 12px;        /* Match container radius for smooth edges */
-  color: white;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Inter', sans-serif;
-  transition: width 0.4s ease-in-out;
-  box-shadow: none;           /* Remove any shadows that create white edges */
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 0px 0px 5px black;
+  -webkit-box-shadow: 0px 0px 5px black;
+  box-shadow: 0px 0px 5px black;
 }

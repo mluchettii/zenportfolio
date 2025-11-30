@@ -183,7 +183,7 @@ A log collector and web proxy can be used in tandem to collect and forward HTTP/
 
 #### Windows proxy configuration
 
-1. On your source Windows machine, open **Settings -> Network & internet > Proxy**.
+1. On your source Windows machine, open **Settings -> Network & internet -> Proxy**.
 
 2. Next to **Use a proxy server**, click on **Set up**.
 

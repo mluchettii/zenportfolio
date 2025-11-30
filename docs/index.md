@@ -4,64 +4,44 @@ hide:
   - toc
 ---
 
-# Welcome to mluchetti.com
+# 
 
-<div class="homepage" markdown>
+<div class="myWrapper" markdown="1">
 
-<!-- Left bio card -->
-<div class="grid cards bio-card" markdown>
+![headshot](about/images/headshot.png#center){ width="256" style="border-radius:50%; margin-bottom:1rem; border-style: solid; border-color: #4b62e4;" }
 
--   ![Your headshot](about/images/headshot.png#center){ width="160" style="border-radius:50%; margin-bottom:1rem;" }
+<p style="text-align: center;"><strong><font size="12">Marcos Luchetti</p></strong></font>
+<p style="text-align: center;"><strong><font size="6">Cybersecurity Intern</p></strong></font>
 
-    ### Hi, I'm Marcos Luchetti 👋
-    
-    <!-- Social Links -->
-    [:material-linkedin:](https://www.linkedin.com/in/marcos-luchetti/ "LinkedIn") [:material-github:](https://github.com/mluchettii "GitHub") [:material-email:](mailto:mluchettim@gmail.com "Email")
-
-    ---
-
-    Cybersecurity Intern passionate about technology.  
-
-    I love working with cybersecurity, cloud platforms, networking, and automation, and sharing knowledge through my writing and projects.
-
-    Welcome to my site — explore my work, read my blog, and check out my documentation.
+<p style="text-align: left;"><strong><font size="4">What I've Used</p></strong></font>
 
 </div>
 
-<!-- Right 2x2 grid of cards -->
-<div class="grid cards info-cards" markdown>
 
--   :material-account-box:{ .lg .middle } __About Me__
+<div class="grid cards" markdown>
 
-    ---
+- :simple-falcon: __CrowdStrike Falcon__ for EDR
+- :lucide-radar: __IBM QRadar__ for SIEM
+- :lucide-hexagon: __Tenable Nessus__ for vulnerability management
+- :simple-docker: __Docker__ for containerization
+- :simple-proxmox: __Proxmox__ for virtualization
+- :simple-tailscale: __Tailscale__ for zero-trust remote access
+- :simple-cloudflare: __Cloudflare__ for TLS certificates
+- :simple-digitalocean: __DigitalOcean__ for reverse proxy hosting
+- :simple-authentik: __Authentik__ for identity and access management
 
-    Learn about me and explore the setup that supports my work and projects.  
-    [:octicons-arrow-right-24: Learn more](about/me.md)
-
--   :material-text-box-multiple:{ .lg .middle } __Blog__
-
-    ---
-
-    Read my latest articles and updates  
-    [:octicons-arrow-right-24: Visit blog](blog/index.md)  
-    
-    *Feature not yet implemented in Zensical.*
-
--   :material-book-open-page-variant:{ .lg .middle } __Documentation__
-
-    ---
-
-    Technical notes, tutorials, and project docs  
-    [:octicons-arrow-right-24: Explore docs](docs/edr-siem/crowdstrike-falcon.md)
-
--   :material-label:{ .lg .middle } __Skills__
-
-    ---
-
-    Browse my skills and tools as clickable tags  
-    [:octicons-arrow-right-24: Explore skills](skills.md)  
-    *Feature not yet implemented in Zensical. Please use the **Search** bar above to view the available skills and tools, and click any item to open its related documentation.*
+<p style="text-align: left;"><font size="2">...and more.</p></font>
 
 </div>
+
+<p style="text-align: left;"><strong><font size="4">Certifications</p></strong></font>
+
+<div class="grid cards" markdown>
+
+- :simple-comptia: __CompTIA A+__
+![aplus](about/images/a-plus.png#center){ width="256"}
+
+- :simple-comptia: __CompTIA Security+__
+![secplus](about/images/security-plus.png#center){ width="256"}
 
 </div>
