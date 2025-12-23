@@ -47,6 +47,9 @@ hide:
 
   - :simple-comptia: __CompTIA A+__
   ![aplus](about/images/a-plus.png#center){ width="256"}
+  
+  - :simple-comptia: __CompTIA Network+__
+  ![secplus](about/images/network-plus.png#center){ width="256"}
 
   - :simple-comptia: __CompTIA Security+__
   ![secplus](about/images/security-plus.png#center){ width="256"}
