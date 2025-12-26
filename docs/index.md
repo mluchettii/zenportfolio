@@ -45,14 +45,9 @@ hide:
 
   <div class="grid cards" markdown>
 
-  - :simple-comptia: __CompTIA A+__
-  ![aplus](about/images/a-plus.png#center){ width="256"}
-  
-  - :simple-comptia: __CompTIA Network+__
-  ![netplus](about/images/network-plus.png#center){ width="256"}
-
-  - :simple-comptia: __CompTIA Security+__
-  ![secplus](about/images/security-plus.png#center){ width="256"}
+  - :simple-comptia: __CompTIA A+__[![Verify CompTIA A+ credential](about/images/a-plus.png#center){ width="256"}](https://cp.certmetrics.com/comptia/en/public/verify/credential/LDXRNSF5QBFEQTC8)
+  - :simple-comptia: __CompTIA Network+__[![Verify CompTIA Network+ credential](about/images/network-plus.png#center){ width="256"}](https://cp.certmetrics.com/comptia/en/public/verify/credential/3ce51f49348a40b7a0f15895c6eb12a5)
+  - :simple-comptia: __CompTIA Security+__[![Verify CompTIA Security+ credential](about/images/security-plus.png#center){ width="256"}](https://cp.certmetrics.com/comptia/en/public/verify/credential/d64b572897a4434a91cf792ec47ac24d)
 
   </div>
   
