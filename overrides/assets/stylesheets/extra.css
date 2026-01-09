@@ -31,3 +31,8 @@ img[src*='#center'] {
     opacity: 1;
   }
 }
+
+/* Centered Mermaid diagrams */
+.mermaid {
+    text-align: center;
+ }

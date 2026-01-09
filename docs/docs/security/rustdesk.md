@@ -31,13 +31,13 @@ Self-hosting your own RustDesk server ensures a higher quality connection for yo
     ```sh
     bash <(wget -qO- https://get.docker.com)  # remove this line if Docker is already installed, 
     wget rustdesk.com/oss.yml -O compose.yml  # or press Ctrl + C when prompted by the terminal
-    sudo docker compose up -d
+    docker compose up -d
     ```
 
 3. Check the Docker logs for the **hbbs** container to get your **public key**:
 
     ```sh
-    sudo docker logs hbbs
+    docker logs hbbs
     ```
 
     Log:

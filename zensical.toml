@@ -40,7 +40,7 @@ repo_name = "mluchettii/zenportfolio"
 #
 # Read more: https://zensical.org/docs/setup/basics/#copyright
 copyright = """
-Copyright &copy; 2025 Marcos Luchetti
+&copy; 2025-2026 Marcos Luchetti
 """
 
 # Zensical supports both implicit navigation and explicitly defined navigation.
@@ -51,42 +51,43 @@ Copyright &copy; 2025 Marcos Luchetti
 #
 # Read more: https://zensical.org/docs/setup/navigation/
 nav = [
-  { "Home" = "index.md" },
-  # { "About" = [
-  #     { "About me" = "about/me.md" },
-  #     { "My setup" = "about/setup.md" },
-  #     { "Site progress" = "about/progress.md" }
-  # ]},
-  # { "Blog" = "blog/index.md" },
-  { "Documentation" = [
-    #   { "Compliance Scanners" = [
-    #       { "OpenSCAP" = "docs/scap/oscap.md" },
-    #       { "SCAP Compliance Checker" = "docs/scap/scc.md" }
-    #   ]},
-      { "EDR/SIEM" = [
-          { "CrowdStrike Falcon" = "docs/edr-siem/crowdstrike-falcon.md" },
-          { "IBM QRadar" = "docs/edr-siem/ibm-qradar.md" },
-          { "Wazuh" = "docs/edr-siem/wazuh.md" }
-      ]},
-      { "IAM" = [
-          { "Cisco Duo" = "docs/iam/cisco-duo.md" }
-      ]},
-      { "Remote Desktop" = [
-          { "RustDesk" = "docs/remote-desktop/rustdesk.md" }
-      ]},
-      { "Virtualization" = [
-          { "Oracle VirtualBox" = "docs/virtualization/virtualbox.md" }
-      ]},
-      { "Vulnerability Scanners" = [
-        #   { "Greenbone OpenVAS" = "docs/vscan/openvas.md" },
-          { "Tenable Nessus" = "docs/vscan/nessus.md" }
-      ]},
-      { "Web Servers" = [
-          { "Caddy" = "docs/web-servers/caddy.md" },
-          { "Nginx Proxy Manager" = "docs/web-servers/npm.md" }
-      ]}
-  ]},
-  # { "Skills" = "skills.md" }
+    { "Home" = "index.md" },
+    #{ "About" = [
+    #{ "About me" = "about/me.md" },
+    #]},
+    #{ "Blog" = "blog/index.md" },
+    { "Documentation" = [
+            { "Homelab" = "docs/homelab.md" },
+            { "Networking" = [
+                { "MikroTik Router" = "docs/network/router.md" }
+                # { "Tailscale" = "docs/network/tailscale.md"}
+            ]},
+            { "Systems" = [
+                { "Raspberry Pi" = "docs/systems/pi.md"},
+                { "Nginx Proxy Manager" = "docs/systems/npm.md" },
+                { "Caddy" = "docs/systems/caddy.md" },
+                { "Oracle VirtualBox" = "docs/systems/virtualbox.md" }
+            ]},
+            # { "Cloud" = [
+            #     { "Cloudflare" = "docs/cloud/cloudflare.md" },
+            #     { "DigitalOcean" = "docs/cloud/digitalocean.md" }
+            # ]},
+            { "Security" = [
+                # { "Authentik" = "docs/security/authentik.md" },
+                { "Cisco Duo" = "docs/security/cisco-duo.md" },
+                # { "Guacamole" = "docs/security/guacamole.md" },
+                { "RustDesk" = "docs/security/rustdesk.md" },
+                { "Tenable Nessus" = "docs/security/nessus.md" },
+                { "CrowdStrike Falcon" = "docs/security/crowdstrike-falcon.md" },
+                { "IBM QRadar" = "docs/security/ibm-qradar.md" },
+                { "Wazuh" = "docs/security/wazuh.md" }
+                #{ "Greenbone OpenVAS" = "docs/security/openvas.md" },
+                #{ "OpenSCAP" = "docs/security/oscap.md" },
+                #{ "SCAP Compliance Checker" = "docs/security/scc.md" }
+        ]}
+    ]}
+    #{ "Skills" = "skills.md" }
+    #]}
 ]
 
 # With the "extra_css" option you can add your own CSS styling to customize
@@ -105,7 +106,7 @@ extra_css = ["assets/stylesheets/extra.css"]
 # The path provided should be relative to the "docs_dir".
 #
 # Read more: https://zensical.org/docs/customization/#additional-javascript
-#extra_javascript = ["assets/javascript/extra.js"]
+extra_javascript = ["javascripts/mermaid.mjs"]
 
 # ----------------------------------------------------------------------------
 # Section for configuring theme options

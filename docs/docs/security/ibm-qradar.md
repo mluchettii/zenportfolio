@@ -45,7 +45,7 @@ This will cover how to install QRadar CE on a standalone virtual machine.
 
 9. Then, configure QRadar's functionality and network settings. For functionality, select **"All-In-One" Console**.
 
-    ??? info "Example network configuration"
+    !!! info "Example network configuration"
 
         * **Hostname**: qradar.local
 
@@ -126,7 +126,7 @@ A log collector and web proxy can be used in tandem to collect and forward HTTP/
 
 2. In the QRadar console, click on the **Log Sources** tab and add a log source for Squid:
 
-    ??? info "Squid log source summary"
+    !!! info "Squid log source summary"
 
         === "Overview"
 
@@ -287,16 +287,16 @@ QRadar rules are logic conditions applied to events, flows, or offenses to detec
 
 10. Review the rule summary before it gets deployed and click **Finish**. If needed, you can access this rule from the Offenses tab.
 
-    ??? info "Rule A test criteria"
+    !!! info "Rule A test criteria"
 
         <figure markdown>
-        ![alt text](images/qradar-rule-cri-a.png#center){.shadowed-image style="width: 58%;"}
+        ![alt text](../../screenshots/qradar-rule-cri-a.png#center){.shadowed-image style="width: 58%;"}
         </figure>
 
-    ??? example "Rule A summary"
+    !!! example "Rule A summary"
 
         <figure markdown>
-        ![alt text](images/qradar-rule-sum-a.png#center){.shadowed-image style="width: 90%;"}
+        ![alt text](../../screenshots/qradar-rule-sum-a.png#center){.shadowed-image style="width: 90%;"}
         </figure>
 
     !!! note "Rule A test explained"
@@ -307,16 +307,16 @@ QRadar rules are logic conditions applied to events, flows, or offenses to detec
 
 1. Create another rule with the following test criteria:
 
-    ??? info "Rule B test criteria"
+    !!! info "Rule B test criteria"
 
         <figure markdown>
-        ![alt text](images/qradar-rule-cri-b.png#center){.shadowed-image style="width: 90%;"}
+        ![alt text](../../screenshots/qradar-rule-cri-b.png#center){.shadowed-image style="width: 90%;"}
         </figure>
         
-    ??? example "Rule B summary"
+    !!! example "Rule B summary"
 
         <figure markdown>
-        ![alt text](images/qradar-rule-sum-b.png#center){.shadowed-image style="width: 90%;"}
+        ![alt text](../../screenshots/qradar-rule-sum-b.png#center){.shadowed-image style="width: 90%;"}
         </figure>
 
     !!! note "Rule B test explained"
@@ -361,7 +361,7 @@ QRadar rules are logic conditions applied to events, flows, or offenses to detec
 
 2. Click on the dropdown bar and click on the user you want to assign the ticket to. Click **Save**.
 
-    An icon ![alt text](images/qradar-icon-user.png) will appear in the offense status to indicate that the ticket has been assigned to a user.
+    An icon ![alt text](../../screenshots/qradar-icon-user.png) will appear in the offense status to indicate that the ticket has been assigned to a user.
 
 #### Add notes to an offense
 
@@ -369,7 +369,7 @@ QRadar rules are logic conditions applied to events, flows, or offenses to detec
 
 2. Write any description you would like, then click **Add Note**.
 
-    An icon ![alt text](images/qradar-icon-note.png) will appear in the offense status to indicate that a note was added to the ticket.
+    An icon ![alt text](../../screenshots/qradar-icon-note.png) will appear in the offense status to indicate that a note was added to the ticket.
 
 #### Close an offense
 

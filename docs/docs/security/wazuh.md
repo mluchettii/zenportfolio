@@ -69,7 +69,7 @@ Agents are the endpoints that are monitored by Wazuh.
 4. Use the **Wazuh Agent** Windows application to verify that it's running:
 
     <figure markdown>
-    ![alt text](images/wazuh-agent.png#center){.shadowed-image style="width: 90%;"}
+    ![alt text](../../screenshots/wazuh-agent.png#center){.shadowed-image style="width: 90%;"}
     <figcaption class="annotate">Wazuh Agent</figcaption>
     </figure>
 
@@ -110,7 +110,7 @@ Click on **Endpoints**, then click on a Windows agent. A CIS Benchmark scan shou
 Once the scan has completed, go over the results to see what vulnerabilities there are on your system. Your score should be somewhere around 30%, which is to be expected:
 
 <figure markdown>
-![alt text](images/wazuh-control-checks.png){.shadowed-image style="width: 90%;"}
+![alt text](../../screenshots/wazuh-control-checks.png){.shadowed-image style="width: 90%;"}
 <figcaption markdown class="annotate">CIS Microsoft Windows 11 Enterprise Benchmark results</figcaption>
 </figure>
 
@@ -119,7 +119,7 @@ These checks ensure that the system is compliant with CIS standards, and include
 Clicking on a control test expands a panel showing the rationale for the control, how to remediate it, a description of the policy setting, and other information. Here, you can see the registry values that were checked, and how to remediate the failed control check by creating specific entries in the Windows Registry Editor:
 
 <figure markdown>
-![alt text](images/wazuh-control-check.png#center){.shadowed-image style="width: 90%;"}
+![alt text](../../screenshots/wazuh-control-check.png#center){.shadowed-image style="width: 90%;"}
 <figcaption class="annotate">CIS Windows 11 control check details</figcaption>
 </figure>
 
@@ -129,7 +129,7 @@ Clicking on a control test expands a panel showing the rationale for the control
 Go back to **Endpoints** and click on a Linux agent. Look over the CIS Benchmark results. This time, I will show you an example of how to remediate a failed control check manually.
 
 <figure markdown>
-![alt text](images/wazuh-control-check-linux.png#center){.shadowed-image style="width: 90%;"}
+![alt text](../../screenshots/wazuh-control-check-linux.png#center){.shadowed-image style="width: 90%;"}
 <figcaption class="annotate">Failed check: <strong>Ensure login and logout events are collected</strong></figcaption>
 </figure>
 

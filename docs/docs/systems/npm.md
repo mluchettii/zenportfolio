@@ -1,12 +1,10 @@
 ---
 tags:
     - Cloudflare
-    - Containerization
+    - Containers
     - Docker
-    - Let's Encrypt
     - Nginx Proxy Manager
-    - SSL
-    - Web Servers
+    - Reverse Proxy
 ---
 
 # Nginx Proxy Manager
@@ -45,7 +43,7 @@ services:
 Pull the Docker image and deploy the container:
 
 ```bash
-sudo docker compose up -d
+docker compose up -d
 ```
 
 ### NPM configuration
@@ -76,7 +74,7 @@ From the Dashboard, click on ‘Proxy Hosts’ and in the following screen click
     * Some applications require having Websockets Support enabled for the site to work properly, so be sure to review the application’s documentation for setting up a reverse proxy.
 
     <figure markdown>
-    ![alt text](images/npm-details-tab.png#center){.shadowed-image style="width: 80%;"}
+    ![alt text](../../screenshots/npm-details-tab.png#center){.shadowed-image style="width: 80%;"}
     <figcaption markdown class="annotate">Example configuration</figcaption>
     </figure>
 
@@ -89,7 +87,7 @@ From the Dashboard, click on ‘Proxy Hosts’ and in the following screen click
     * Agree to the Let’s Encrypt ToS and click **Save** to generate the new SSL certificate and create the new proxy host.
 
     <figure markdown>
-    ![alt text](images/npm-ssl-tab.png#center){.shadowed-image style="width: 80%;"}
+    ![alt text](../../screenshots/npm-ssl-tab.png#center){.shadowed-image style="width: 80%;"}
     <figcaption markdown class="annotate">Example configuration</figcaption>
     </figure>
 
@@ -99,13 +97,13 @@ Verify that the entered information is correct and click **Save**.
     If successful, the **Status** of the new proxy host will be **Online**. Click on the **Source URL** to access your application:
 
     <figure markdown>
-    ![alt text](images/npm-success01.png#center){.shadowed-image style="width: 80%;"}
+    ![alt text](../../screenshots/npm-success-01.png#center){.shadowed-image style="width: 80%;"}
     </figure>
 
     Notice that you did not receive a warning from your browser about accessing an insecure HTTP website and that there is now a **padlock** symbol to the left of the URL:
 
     <figure markdown>
-    ![alt text](images/npm-success02.png#center){.shadowed-image style="width: 80%;"}
+    ![alt text](../../screenshots/npm-success-02.png#center){.shadowed-image style="width: 80%;"}
     </figure>
 
     This indicates that there is an active HTTPS connection to this website.

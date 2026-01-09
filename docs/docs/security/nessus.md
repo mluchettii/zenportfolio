@@ -38,7 +38,7 @@ Before starting the setup, make sure Docker is installed on your machine, as it 
 3. Deploy the container:
 
     ```sh
-    sudo docker compose up -d
+    docker compose up -d
     ```
 
 ## Application setup
@@ -103,7 +103,7 @@ These are my scan results:
 
 ??? example "Basic scan results"
     <figure markdown>
-    ![alt text](images/nessus-scan-01.png#center){.shadowed-image style="width: 90%;"}
+    ![alt text](../../screenshots/nessus-scan-01.png#center){.shadowed-image style="width: 90%;"}
     </figure>
 
 ## Vulnerability analysis and remediation
@@ -165,7 +165,7 @@ tcp   LISTEN 0      4096                          [::]:8749          [::]:*    u
 The port points to a Docker proxy, which means that there is a container using an outdated version of Apache. I ran the following command to find what container is serving data on port `8749`:
 
 ```sh
-$ sudo docker ps --format '{{.ID}} {{.Names}} {{.Ports}}' | grep 8749  
+$ docker ps --format '{{.ID}} {{.Names}} {{.Ports}}' | grep 8749  
 
 4e4ac50ae257 freshrss 0.0.0.0:8749->80/tcp, [::]:8749->80/tcp
 ```
@@ -174,7 +174,7 @@ The FreshRSS container was the culprit. Upon further research, I found out that 
 
 ??? example "Vulnerability A rescan results"
     <figure markdown>
-    ![alt text](images/nessus-scan-02.png#center){.shadowed-image style="width: 90%;"}
+    ![alt text](../../screenshots/nessus-scan-02.png#center){.shadowed-image style="width: 90%;"}
     </figure>
 
 As expected, the vulnerability was remediated.
@@ -248,7 +248,7 @@ tcp   LISTEN 0      4096                          [::]:8384          [::]:*    u
 Again, the problem originated from a Docker container:
 
 ```sh
-$ sudo docker ps --format '{{.ID}} {{.Names}} {{.Ports}}' | grep 8384  
+$ docker ps --format '{{.ID}} {{.Names}} {{.Ports}}' | grep 8384  
 
 3e08c688b427 syncthing 0.0.0.0:8384->8384/tcp, 0.0.0.0:21027->21027/udp, [::]:8384->8384/tcp, [::]:21027->21027/udp, 0.0.0.0:22000->22000/tcp, [::]:22000->22000/tcp, 0.0.0.0:22000->22000/udp, [::]:22000->22000/udp
 ```
@@ -352,7 +352,7 @@ After another scan, the result showed a successful remediation:
 
 ??? example "Vulnerability C rescan results"
     <figure markdown>
-    ![alt text](images/nessus-scan-03.png#center){.shadowed-image style="width: 90%;"}
+    ![alt text](../../screenshots/nessus-scan-03.png#center){.shadowed-image style="width: 90%;"}
     </figure>
 
 My vulnerability report:

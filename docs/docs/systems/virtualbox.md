@@ -38,6 +38,6 @@ Lastly, the host-only network mode is used creates a private network exclusively
     |SSH|TCP|127.0.0.1|22|192.168.14.0|10022|
 
 <figure markdown>
-![alt text](images/vbox-portforward.png#center){.shadowed-image style="width: 100%;"}
+![alt text](../../screenshots/vbox-portforward.png#center){.shadowed-image style="width: 100%;"}
 <figcaption markdown class="annotate">Example VirtualBox port forwarding configuration</figcaption>
 </figure>

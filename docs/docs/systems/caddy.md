@@ -2,11 +2,9 @@
 tags:
     - Caddy
     - Cloudflare
-    - Containerization
+    - Containers
     - Docker
-    - Let's Encrypt
-    - SSL
-    - Web Servers
+    - Reverse Proxy
 ---
 
 # Caddy
@@ -59,7 +57,7 @@ volumes:
 Pull the Docker image and deploy the container:
 
 ```bash
-sudo docker compose up -d
+docker compose up -d
 ```
 ### Caddyfile configuration
 
@@ -85,8 +83,8 @@ apache.example.com {
 Write changes to the file, then restart the Caddy Docker container:
 
 ```bash
-sudo docker compose down
-sudo docker compose up -d
+docker compose down
+docker compose up -d
 ```
 
 !!! success "Result"
