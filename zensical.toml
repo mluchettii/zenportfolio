@@ -59,8 +59,8 @@ nav = [
     { "Documentation" = [
             { "Homelab" = "docs/homelab.md" },
             { "Networking" = [
-                { "MikroTik Router" = "docs/network/router.md" }
-                # { "Tailscale" = "docs/network/tailscale.md"}
+                { "MikroTik Router" = "docs/network/router.md" },
+                { "Tailscale" = "docs/network/tailscale.md"}
             ]},
             { "Systems" = [
                 { "Raspberry Pi" = "docs/systems/pi.md"},
