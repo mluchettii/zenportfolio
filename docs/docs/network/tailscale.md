@@ -1,9 +1,9 @@
 ---
 tags:
-    - Network
-    - Homelab
     - ACL
     - DNS
+    - Homelab
+    - Network
     - Security
 ---
 
@@ -30,7 +30,7 @@ This script added the official Tailscale package repository to my systems, insta
 
 **Access controls**
 
-The first thing I did was configure ACL rules. By default, Tailscale allows every node in the tailnet to communicate with each other over any port. While convenient, I want to keep access minimal in the event that a node gets compromised. I designed the ACL rules such that only the Pi node can receive incoming HTTP/S and DNS requests from the other nodes in the tailnet. In addition, I set up another rule that only accepts SSH traffic from my workstation node to my Pi and VPS nodes. For the Pi, this enables me to send commands remotely. As for the VPS, this helps harden the system because I can now block incoming SSH requests over WAN without locking myself out of the system. The rules are written in JSON format:
+First, I configured the tailnet's ACL rules. By default, Tailscale allows every node in the tailnet to communicate with each other over any port. While convenient, I want to keep access minimal in the event that a node gets compromised. I designed the ACL rules such that only the Pi node can receive incoming HTTP/S and DNS requests from the other nodes in the tailnet. In addition, I set up another rule that only accepts SSH traffic from my workstation node to my Pi and VPS nodes. For the Pi, this enables me to send commands remotely. As for the VPS, this helps harden the system because I can now block incoming SSH requests over WAN without locking myself out of the system. The rules are written in JSON format:
 
 ```json title="Tailscale access controls"
 {
@@ -59,7 +59,7 @@ The first thing I did was configure ACL rules. By default, Tailscale allows ever
 
 **DNS**
 
-Tailscale also lets me manage DNS and nameservers of my tailnet, where each node has its own subdomain to the tailnet address (e.g., `node.tail4b03c2.ts.net`). The tailnet DNS name (`tail4b03c2.ts.net`) is used when registering DNS entries, sharing nodes across tailnets, and issuing TLS certificates. For my use case, I want my nodes to be able to send DNS queries through the AdGuard Home server I am hosting on the Pi, overriding the local DNS server configuration, regardless of the network they are connected to.
+Tailscale also lets me manage DNS and nameservers of my tailnet, where each node has its own subdomain to the tailnet address (e.g., `node.tail4b03c2.ts.net`). The tailnet DNS name (`tail4b03c2.ts.net`) is used when registering DNS entries, sharing nodes across tailnets, and issuing TLS certificates. For my use case, I want my nodes to send DNS queries over the tailnet to the AdGuard Home server I am hosting on the Pi, overriding the local DNS server configuration, regardless of the network they are connected to.
 
 <figure markdown>
 ![alt text](../../screenshots/tailscale-03.png#center){.shadowed-image style="width: 75%;"}
