@@ -2,23 +2,26 @@
 tags:
     - Cloud
     - DigitalOcean
+    - Docker
     - Homelab
+    - Linux
     - Network
+    - Pangolin
     - VPS
 ---
 
 # DigitalOcean
 
-DigitalOcean is a cloud computing platform offering IaaS and PaaS solutions for developers. Their most popular IaaS product, Droplets, provides scalable virtual machines that are ideal for web hosting and VPS deployments.
+DigitalOcean is a cloud computing platform offering IaaS and PaaS solutions for developers. Their most popular IaaS product, Droplets, provides scalable virtual machines that are ideal for web hosting and Virtual Private Server (VPS) deployments.
 
 <figure markdown>
 ![alt text](../../screenshots/digitalocean-01.png#center){.shadowed-image style="width: 100%;"}
 <figcaption markdown class="annotate">DigitalOcean Droplet dashboard</figcaption>
 </figure>
 
-## Choosing a plan
+## Choosing a Droplet
 
-I opted for the Basic Premium Intel plan that includes 1 vCPU, 1 GB memory, 35 GB SSD, and 1 TB storage. While being economical, this VPS has enough resources to host a Pangolin stack, but not more than that due to memory constraints.
+I opted for the Basic Premium Intel Droplet that includes 1 vCPU, 1 GB memory, 35 GB SSD, and 1 TB storage. While being economical, this VPS has enough resources to host a Pangolin stack, but not more than that due to memory constraints.
 
 ## Configuration
 
@@ -92,7 +95,7 @@ sudo usermod -aG docker $USER
 
 ### Pangolin setup
 
-Pangolin combines the reverse proxy capabilities of Traefik and WireGuard tunneling for secure access to private services without opening firewall ports. To get started, I ran the official installation script and followed the [documentation](https://docs.pangolin.net/self-host/quick-install), configuring Pangolin to use my homelab's FQDN, and enabling CrowdSec for banning malicious IPs.
+Pangolin combines the reverse proxy capabilities of Traefik and WireGuard tunneling for secure access to private services without opening firewall ports. To get started, I ran the official installation script on the VPS and followed the [documentation](https://docs.pangolin.net/self-host/quick-install), configuring Pangolin to use my homelab's FQDN, and enabling CrowdSec for banning malicious IPs.
 
 **Sites**
 

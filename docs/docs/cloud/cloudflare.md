@@ -5,6 +5,7 @@ tags:
     - DNS
     - GitHub
     - Homelab
+    - Linux
     - Network
 ---
 
@@ -17,11 +18,9 @@ Cloudflare is a holistic cloud provider offering services such as public DNS res
 <figcaption markdown class="annotate">Cloudflare dashboard</figcaption>
 </figure>
 
-## Initial setup
+## Configuration
 
 To get started with Cloudflare, I created an account and acquired a FQDN for homelab use, and another one for this website.
-
-## Configuration
 
 **Homelab DNS records**
 
@@ -34,7 +33,7 @@ For my homelab setup, I want to be able to access public-facing resources from t
 
 **mluchetti.com**
 
-To host this website on Cloudflare's servers, I needed to create an application for Cloudflare Workers & Pages. The first step was to integrate Cloudflare W&P with my GitHub account and grant it access to the website's repository:
+To host this website on Cloudflare's servers, I needed to configure an application in Cloudflare Workers & Pages. The first step was to integrate Cloudflare W&P with my GitHub account and grant it access to the website's repository:
 
 <figure markdown>
 ![alt text](../../screenshots/cloudflare-03.png#center){.shadowed-image style="width: 75%;"}
