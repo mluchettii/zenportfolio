@@ -29,6 +29,10 @@ I opted for the Basic Premium Intel Droplet that includes 1 vCPU, 1 GB memory, 3
 
 I chose Debian as the host OS and then proceeded to configure the VPS:
 
+**Firewall**
+
+I configured the VPS to accept traffic from all IPv4/v6 addresses over port 80 and 443 (HTTP/S), as well as port 21820 and 51820 (Pangolin Newt tunnel). As for SSH, I have it blocked on the firewall, but it is possible to connect from only my workstation thanks to Tailscale ACLs. Without Tailscale, I would only allow inbound SSH coming from my home network's public IP. All outbound TCP, UDP, and ICMP traffic are allowed by default.
+
 **SSH hardening**
 
 ```sh title="Non-root user creation"
