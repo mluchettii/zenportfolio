@@ -15,9 +15,9 @@ The Raspberry Pi serves as a great entry-level homelab server. It's a proven, qu
 
 ## Initial setup
 
-### SSH server
+### SSH hardening
 
-On a fresh install of Pi OS (which is just Debian), I added a non-root user account, and used the `ssh-keygen` command to generate an SSH key pair for secure remote access. This creates a public and private key that I can use to authenticate from a separate host. This host will have to use the following command to obtain the public key from the server. Assume `ras` is the username, `pi` is the hostname, and its IP address is `10.0.20.100`:
+On a fresh install of Pi OS, I added a non-root user account, and then used the `ssh-keygen` command to generate an SSH key pair for secure remote access. This creates a public and private key that I can use to authenticate from a separate host. That host will have to use the following command to obtain the public key from the server. Assume `ras` is the username, `pi` is the hostname, and its IP address is `10.0.20.100`:
 
 ```
 ssh-copy-id ras@10.0.20.100
@@ -41,10 +41,14 @@ and check to make sure that only the key(s) you wanted were added.
 
 This allows me to log in without using a password. To further harden the system, I made the following changes to the SSH server configuration file:
 
-``` title="/etc/ssh/sshd_config"
-PasswordAuthentication no      # Disables password authentication
-UsePAM no                      # Prevents PAM from bypassing the above control
+```sh title="/etc/ssh/sshd_config"
+PasswordAuthentication no      # Disable password authentication
+
+UsePAM no                      # Prevent PAM from bypassing the above control
+
+PermitRootLogin no             # Disable root login
 ```
+
 
 ```sh title="Restart SSH"
 sudo systemctl restart ssh     # Restart SSH service for changes to take effect
@@ -117,23 +121,17 @@ services:
 Once ready, I can bring up the stack by running the following command:
 
 ```sh
-docker compose up -d    # This deploys the stack in "detached" mode, meaning it is running in the background
+docker compose up -d    # Deploy the stack in "detached" mode (run in the background)
 ```
 
-Once the containers are up, I can monitor and control them using the following commands:
+With the containers up and running, I can monitor and control them using the following commands:
 
-```sh title="View container logs"
-docker logs <container>
-```
+``` sh title="Docker CLI commands"
+docker logs <container>             # View container's logs
 
-```sh title="Access container's interactive terminal"
-docker exec -it <container> sh
-```
+docker exec -it <container> sh      # Access container's interactive terminal
 
-Or safely bring the whole stack down with one command:
-
-```sh
-docker compose down
+docker compose down                 # Bring down compose stack
 ```
 
 ### Self-hosting

@@ -5,6 +5,8 @@ tags:
     - Homelab
     - Network
     - Security
+    - Tailscale
+    - VPN
 ---
 
 # Tailscale

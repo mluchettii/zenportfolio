@@ -68,10 +68,10 @@ nav = [
                 { "Caddy" = "docs/systems/caddy.md" },
                 { "Oracle VirtualBox" = "docs/systems/virtualbox.md" }
             ]},
-            # { "Cloud" = [
-            #     { "Cloudflare" = "docs/cloud/cloudflare.md" },
-            #     { "DigitalOcean" = "docs/cloud/digitalocean.md" }
-            # ]},
+            { "Cloud" = [
+                { "Cloudflare" = "docs/cloud/cloudflare.md" },
+                { "DigitalOcean" = "docs/cloud/digitalocean.md" }
+            ]},
             { "Security" = [
                 # { "Authentik" = "docs/security/authentik.md" },
                 { "Cisco Duo" = "docs/security/cisco-duo.md" },
