@@ -85,6 +85,9 @@ nav = [
                 #{ "OpenSCAP" = "docs/security/oscap.md" },
                 #{ "SCAP Compliance Checker" = "docs/security/scc.md" }
         ]}
+    ]},
+    { "Projects" = [
+        { "Old Dominion University" = "projects/odu/odu.md"}
     ]}
     #{ "Skills" = "skills.md" }
     #]}
