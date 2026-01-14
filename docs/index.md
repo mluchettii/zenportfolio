@@ -15,9 +15,9 @@ hide:
 
 <div class="fade-in" style="text-align:center;" markdown>
 
-  ![headshot](home/images/headshot.png){ width="256" style="border-radius:50%; border-style: solid; border-color: #4b62e4;" }  
+  ![headshot](images/headshot.png){ width="256" style="border-radius:50%; border-style: solid; border-color: #4b62e4;" }  
   <font size="12" color="#bbbdc2"><strong>Marcos Luchetti</font></strong>  
-  <font size="6" color="#bbbdc2"><strong>Cybersecurity Intern</font></strong>
+  <font size="6" color="#bbbdc2"><strong>Cybersecurity Professional</font></strong>
 
 </div>
 
@@ -45,9 +45,9 @@ hide:
 
   <div class="grid cards" markdown>
 
-  - :simple-comptia: __CompTIA A+__[![Verify CompTIA A+ credential](home/images/a-plus.png#center){ width="256"}](https://cp.certmetrics.com/comptia/en/public/verify/credential/LDXRNSF5QBFEQTC8)
-  - :simple-comptia: __CompTIA Network+__[![Verify CompTIA Network+ credential](home/images/network-plus.png#center){ width="256"}](https://cp.certmetrics.com/comptia/en/public/verify/credential/3ce51f49348a40b7a0f15895c6eb12a5)
-  - :simple-comptia: __CompTIA Security+__[![Verify CompTIA Security+ credential](home/images/security-plus.png#center){ width="256"}](https://cp.certmetrics.com/comptia/en/public/verify/credential/d64b572897a4434a91cf792ec47ac24d)
+  - :simple-comptia: __CompTIA A+__[![Verify CompTIA A+ credential](images/a-plus.png#center){ width="256"}](https://cp.certmetrics.com/comptia/en/public/verify/credential/LDXRNSF5QBFEQTC8)
+  - :simple-comptia: __CompTIA Network+__[![Verify CompTIA Network+ credential](images/network-plus.png#center){ width="256"}](https://cp.certmetrics.com/comptia/en/public/verify/credential/3ce51f49348a40b7a0f15895c6eb12a5)
+  - :simple-comptia: __CompTIA Security+__[![Verify CompTIA Security+ credential](images/security-plus.png#center){ width="256"}](https://cp.certmetrics.com/comptia/en/public/verify/credential/d64b572897a4434a91cf792ec47ac24d)
 
   </div>
   
