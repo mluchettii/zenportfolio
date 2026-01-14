@@ -76,11 +76,11 @@ graph TB
 
 ### Configuration
 
-[**MikroTik Router**](router.md)
+**MikroTik Router**
 
 The backbone of the network. MikroTik routers run their proprietary RouterOS and are configurable via web interface, WinBox, or console. Here, I set up VLANs, firewall rules, DHCP scopes, and DNS, optimizing traffic segmentation and security for a multi-device home lab.
 
-[**Raspberry Pi**](pi.md)
+**Raspberry Pi**
 
 Another component of my on-prem setup is the Raspberry Pi, which is responsible for self-hosting the services I want to use and experiment with. The services are deployed in Docker containers, streamlining deployment and maintenance.
 
@@ -145,8 +145,6 @@ graph TD
 </div>
 
 ### Configuration
-
-Setting this up and maintaining it requires a solid understanding of cloud, network, and security concepts, in addition to skill with Linux and containers (and most importantly patience).
 
 **Tailscale**
 
