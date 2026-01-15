@@ -3,7 +3,7 @@ tags:
     - ACL
     - DNS
     - Homelab
-	- Linux
+    - Linux
     - Network
     - Security
     - Tailscale
