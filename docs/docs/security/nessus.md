@@ -103,7 +103,7 @@ These are my scan results:
 
 ??? example "Basic scan results"
     <figure markdown>
-    ![alt text](../../screenshots/nessus-scan-01.png#center){.shadowed-image style="width: 90%;"}
+    ![alt text](../../screenshots/nessus-01.png#center){.shadowed-image style="width: 90%;"}
     </figure>
 
 ## Vulnerability analysis and remediation
@@ -174,7 +174,7 @@ The FreshRSS container was the culprit. Upon further research, I found out that 
 
 ??? example "Vulnerability A rescan results"
     <figure markdown>
-    ![alt text](../../screenshots/nessus-scan-02.png#center){.shadowed-image style="width: 90%;"}
+    ![alt text](../../screenshots/nessus-02.png#center){.shadowed-image style="width: 90%;"}
     </figure>
 
 As expected, the vulnerability was remediated.
@@ -352,7 +352,7 @@ After another scan, the result showed a successful remediation:
 
 ??? example "Vulnerability C rescan results"
     <figure markdown>
-    ![alt text](../../screenshots/nessus-scan-03.png#center){.shadowed-image style="width: 90%;"}
+    ![alt text](../../screenshots/nessus-03.png#center){.shadowed-image style="width: 90%;"}
     </figure>
 
 My vulnerability report:

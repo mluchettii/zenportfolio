@@ -52,7 +52,7 @@ There are three ways you can enroll users in your Duo environment: manual enroll
 Setting up automatic enrollment involves preparing a user list in the form of a CSV file and importing it into Duo. Whereas the 'Bulk Enroll Users' tool is limited to containing only email addresses and usernames, CSV import values can include username aliases, email addresses, full names, groups, notes, and multiple phones or mobile devices. Once imported, the users are created immediately and can be managed from the Duo Admin Panel.
 
 <figure markdown>
-![alt text](../../screenshots/duo-csv-01.png#center){.shadowed-image style="width: 100%;"}
+![alt text](../../screenshots/duo-01.png#center){.shadowed-image style="width: 100%;"}
 <figcaption markdown class="annotate">Properly formatted CSV file</figcaption>
 </figure>
 

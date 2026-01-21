@@ -84,7 +84,9 @@ nav = [
                 #{ "Greenbone OpenVAS" = "docs/security/openvas.md" },
                 #{ "OpenSCAP" = "docs/security/oscap.md" },
                 #{ "SCAP Compliance Checker" = "docs/security/scc.md" }
-        ]}
+            ]}
+            # { "Automation" = [
+            #     { "n8n" = "docs/automation/n8n.md"}
     ]},
     { "Projects" = [
         { "Old Dominion University" = "projects/odu/odu.md"}

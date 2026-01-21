@@ -290,13 +290,13 @@ QRadar rules are logic conditions applied to events, flows, or offenses to detec
     !!! info "Rule A test criteria"
 
         <figure markdown>
-        ![alt text](../../screenshots/qradar-rule-cri-a.png#center){.shadowed-image style="width: 58%;"}
+        ![alt text](../../screenshots/qradar-01.png#center){.shadowed-image style="width: 58%;"}
         </figure>
 
     !!! example "Rule A summary"
 
         <figure markdown>
-        ![alt text](../../screenshots/qradar-rule-sum-a.png#center){.shadowed-image style="width: 90%;"}
+        ![alt text](../../screenshots/qradar-02.png#center){.shadowed-image style="width: 90%;"}
         </figure>
 
     !!! note "Rule A test explained"
@@ -310,13 +310,13 @@ QRadar rules are logic conditions applied to events, flows, or offenses to detec
     !!! info "Rule B test criteria"
 
         <figure markdown>
-        ![alt text](../../screenshots/qradar-rule-cri-b.png#center){.shadowed-image style="width: 90%;"}
+        ![alt text](../../screenshots/qradar-03.png#center){.shadowed-image style="width: 90%;"}
         </figure>
         
     !!! example "Rule B summary"
 
         <figure markdown>
-        ![alt text](../../screenshots/qradar-rule-sum-b.png#center){.shadowed-image style="width: 90%;"}
+        ![alt text](../../screenshots/qradar-04.png#center){.shadowed-image style="width: 90%;"}
         </figure>
 
     !!! note "Rule B test explained"
@@ -361,7 +361,7 @@ QRadar rules are logic conditions applied to events, flows, or offenses to detec
 
 2. Click on the dropdown bar and click on the user you want to assign the ticket to. Click **Save**.
 
-    An icon ![alt text](../../screenshots/qradar-icon-user.png) will appear in the offense status to indicate that the ticket has been assigned to a user.
+    An icon ![alt text](../../images/qradar-icon-user.png) will appear in the offense status to indicate that the ticket has been assigned to a user.
 
 #### Add notes to an offense
 
@@ -369,7 +369,7 @@ QRadar rules are logic conditions applied to events, flows, or offenses to detec
 
 2. Write any description you would like, then click **Add Note**.
 
-    An icon ![alt text](../../screenshots/qradar-icon-note.png) will appear in the offense status to indicate that a note was added to the ticket.
+    An icon ![alt text](../../images/qradar-icon-note.png) will appear in the offense status to indicate that a note was added to the ticket.
 
 #### Close an offense
 
