@@ -33,137 +33,139 @@ Before diving into n8n, here's my working Docker automation stack:
 
 All services run on a dedicated `automation_network` Docker network. Everything is set up in the following Docker Compose YAML file with an accompanying `.env` file below it:
 
-```yml title="docker-compose.yml"
-services:
-  n8n:
-    image: n8nio/n8n
-    container_name: n8n
-    ports:
-      - "5678:5678"
-    environment:
-      - N8N_BASIC_AUTH_ACTIVE=true
-      - N8N_BASIC_AUTH_USER=${N8N_USER}
-      - N8N_BASIC_AUTH_PASSWORD=${N8N_PW}
-      - WEBHOOK_URL=${N8N_URL}              # Crucial for OAuth2 redirect URIs
-      - N8N_PROXY_HOPS=1                    # Accounts for hop from Nginx Proxy Manager
+
+??? "docker-compose.yml"
+    ```yml title="docker-compose.yml"
+    services:
+      n8n:
+        image: n8nio/n8n
+        container_name: n8n
+        ports:
+          - "5678:5678"
+        environment:
+          - N8N_BASIC_AUTH_ACTIVE=true
+          - N8N_BASIC_AUTH_USER=${N8N_USER}
+          - N8N_BASIC_AUTH_PASSWORD=${N8N_PW}
+          - WEBHOOK_URL=${N8N_URL}              # Crucial for OAuth2 redirect URIs
+          - N8N_PROXY_HOPS=1                    # Accounts for hop from Nginx Proxy Manager
+        volumes:
+          - ./n8n:/home/node/.n8n
+        networks:
+          - automation-stack
+
+      ollama:
+        image: ollama/ollama:${OLLAMA_DOCKER_TAG-latest}
+        volumes:
+          - ollama:/root/.ollama
+        container_name: ollama
+        environment:
+          # RPi optimizations
+          - OLLAMA_MAX_QUEUE=512
+          - OLLAMA_NUM_PARALLEL=1
+          - OLLAMA_MAX_LOADED_MODELS=1
+          - OLLAMA_KEEP_ALIVE=2m
+          - OLLAMA_MAX_VRAM=2GB
+          - OLLAMA_FLASH_ATTENTION=1
+        ports:
+          - "11434:11434"
+        pull_policy: always
+        tty: true
+        restart: unless-stopped
+        networks:
+          - automation-stack
+
+      open-webui:
+        build:
+          context: .
+          dockerfile: Dockerfile
+        image: ghcr.io/open-webui/open-webui:${WEBUI_DOCKER_TAG-main}
+        container_name: open-webui
+        volumes:
+          - open-webui:/app/backend/data
+        depends_on:
+          - ollama
+        ports:
+          - ${OPEN_WEBUI_PORT-3020}:8080
+        environment:
+          - 'OLLAMA_BASE_URL=http://ollama:11434'
+          - 'WEBUI_SECRET_KEY='
+        extra_hosts:
+          - host.docker.internal:host-gateway
+        restart: unless-stopped
+        networks:
+          - automation-stack
+
+      ntfy:
+        image: binwiederhier/ntfy
+        container_name: ntfy
+        command:
+          - serve
+        environment:
+          - TZ=${TZ}
+        user: 1000:1000 # optional: replace with your own user/group or uid/gid
+        volumes:
+          - ./ntfy/ntfy/cache/ntfy:/var/cache/ntfy
+          - ./ntfy/ntfy/config:/etc/ntfy
+          - ./ntfy/ntfy/db:/var/lib/ntfy
+          - ./ntfy/ntfy/letsencrypt:/etc/letsencrypt/live/${NTFY_FQDN}
+        ports:
+          - 8015:80
+          - 9015:443
+        healthcheck: # optional: remember to adapt the host:port to your environment
+            test: ["CMD-SHELL", "wget -q --tries=1 http://localhost:80/v1/health -O - | grep -Eo '\"healthy\"\\s*:\\s*true' || exit 1"]
+            interval: 60s
+            timeout: 10s
+            retries: 3
+            start_period: 40s
+        restart: unless-stopped
+        init: true # needed, if healthcheck is used. Prevents zombie processes
+        networks:
+          - automation-stack
+
+      loggifly:
+        image: ghcr.io/clemcer/loggifly:latest 
+        container_name: loggifly
+        # It is recommended to set the user so that the container does not run as root
+        user: 1000:1000
+        read_only: true
+        environment:
+          TZ: ${TZ}
+        volumes:
+          - socket-proxy:/var/run
+          # Place your config.yaml here if you are using one
+          - ./ntfy/loggifly/config/config.yaml:/app/config.yaml
+        depends_on:
+          - loggifly-socket-proxy
+        restart: unless-stopped
+        networks:
+          - automation-stack
+
+      loggifly-socket-proxy:
+        container_name: loggifly-socket-proxy
+        image: "11notes/socket-proxy:2"
+        read_only: true
+        # Make sure to use the same UID/GID as the owner of your docker socket. 
+        # You can check with: `ls -n /var/run/docker.sock`
+        user: "0:984"
+        volumes:
+          - "/run/docker.sock:/run/docker.sock:ro"
+          - "socket-proxy:/run/proxy"
+        restart: "always"
+        networks:
+          - automation-stack
+
     volumes:
-      - ./n8n:/home/node/.n8n
+      ollama: {}
+      open-webui: {}
+      socket-proxy:
+
     networks:
-      - automation-stack
-
-  ollama:
-    image: ollama/ollama:${OLLAMA_DOCKER_TAG-latest}
-    volumes:
-      - ollama:/root/.ollama
-    container_name: ollama
-    environment:
-      # RPi optimizations
-      - OLLAMA_MAX_QUEUE=512
-      - OLLAMA_NUM_PARALLEL=1
-      - OLLAMA_MAX_LOADED_MODELS=1
-      - OLLAMA_KEEP_ALIVE=2m
-      - OLLAMA_MAX_VRAM=2GB
-      - OLLAMA_FLASH_ATTENTION=1
-    ports:
-      - "11434:11434"
-    pull_policy: always
-    tty: true
-    restart: unless-stopped
-    networks:
-      - automation-stack
-
-  open-webui:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: ghcr.io/open-webui/open-webui:${WEBUI_DOCKER_TAG-main}
-    container_name: open-webui
-    volumes:
-      - open-webui:/app/backend/data
-    depends_on:
-      - ollama
-    ports:
-      - ${OPEN_WEBUI_PORT-3020}:8080
-    environment:
-      - 'OLLAMA_BASE_URL=http://ollama:11434'
-      - 'WEBUI_SECRET_KEY='
-    extra_hosts:
-      - host.docker.internal:host-gateway
-    restart: unless-stopped
-    networks:
-      - automation-stack
-
-  ntfy:
-    image: binwiederhier/ntfy
-    container_name: ntfy
-    command:
-      - serve
-    environment:
-      - TZ=${TZ}
-    user: 1000:1000 # optional: replace with your own user/group or uid/gid
-    volumes:
-      - ./ntfy/ntfy/cache/ntfy:/var/cache/ntfy
-      - ./ntfy/ntfy/config:/etc/ntfy
-      - ./ntfy/ntfy/db:/var/lib/ntfy
-      - ./ntfy/ntfy/letsencrypt:/etc/letsencrypt/live/${NTFY_FQDN}
-    ports:
-      - 8015:80
-      - 9015:443
-    healthcheck: # optional: remember to adapt the host:port to your environment
-        test: ["CMD-SHELL", "wget -q --tries=1 http://localhost:80/v1/health -O - | grep -Eo '\"healthy\"\\s*:\\s*true' || exit 1"]
-        interval: 60s
-        timeout: 10s
-        retries: 3
-        start_period: 40s
-    restart: unless-stopped
-    init: true # needed, if healthcheck is used. Prevents zombie processes
-    networks:
-      - automation-stack
-
-  loggifly:
-    image: ghcr.io/clemcer/loggifly:latest 
-    container_name: loggifly
-    # It is recommended to set the user so that the container does not run as root
-    user: 1000:1000
-    read_only: true
-    environment:
-      TZ: ${TZ}
-    volumes:
-      - socket-proxy:/var/run
-      # Place your config.yaml here if you are using one
-      - ./ntfy/loggifly/config/config.yaml:/app/config.yaml
-    depends_on:
-      - loggifly-socket-proxy
-    restart: unless-stopped
-    networks:
-      - automation-stack
-
-  loggifly-socket-proxy:
-    container_name: loggifly-socket-proxy
-    image: "11notes/socket-proxy:2"
-    read_only: true
-    # Make sure to use the same UID/GID as the owner of your docker socket. 
-    # You can check with: `ls -n /var/run/docker.sock`
-    user: "0:984"
-    volumes:
-      - "/run/docker.sock:/run/docker.sock:ro"
-      - "socket-proxy:/run/proxy"
-    restart: "always"
-    networks:
-      - automation-stack
-
-volumes:
-  ollama: {}
-  open-webui: {}
-  socket-proxy:
-
-networks:
-  automation-stack:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.31.0.0/16
-```
+      automation-stack:
+        driver: bridge
+        ipam:
+          config:
+            - subnet: 172.31.0.0/16
+    ```
 
 ```yml title=".env"
 N8N_USER=username
@@ -198,7 +200,9 @@ I want to give credit to [Mariskarthick M.](https://n8n.io/workflows/6978-automa
 
 **Wazuh Alert stage**
 
-For Wazuh to send alerts to n8n, I created a custom integration in Wazuh's `ossec.conf` file:
+![alt text](../../screenshots/n8n-10.png){.shadowed-image}
+
+For Wazuh to send alerts to n8n, I added a custom integration to Wazuh server's `ossec.conf` file:
 
 ```xml title="/var/ossec/etc/ossec.conf"
 <ossec_config>
@@ -211,6 +215,28 @@ For Wazuh to send alerts to n8n, I created a custom integration in Wazuh's `osse
 </ossec_config>
 ```
 
+I also configured File Integrity Monitoring for the Wazuh server and agent's home directory, as well as the server's VirusTotal integration their respective `ossec.conf` files:
+
+```xml title="/var/ossec/etc/ossec.conf"
+<ossec_config>
+
+  <!-- File integrity monitoring -->
+  <syscheck>
+    <disabled>no</disabled>
+
+    <directories check_all="yes" realtime="yes">/home</directories>
+
+  <!-- VirusTotal integration (place in server ossec.conf) -->
+   <integration>
+     <name>virustotal</name>
+     <api_key>API_KEY</api_key>
+     <group>syscheck</group>
+     <alert_format>json</alert_format>
+   </integration>
+
+</ossec_config>
+```
+
 Where `5eadf22f1e1ed404167ff9b2` is a randomly generated webhook Path:
 
 ```sh title="Webhook Path generation"
@@ -218,20 +244,113 @@ openssl rand -hex 12
 # 5eadf22f1e1ed404167ff9b2    # Example
 ```
 
-Now, all high-severity alerts with a rule level greater than or equal to `9` are sent to n8n via the hook URL.
+The `custom-n8n` integration depends on the accompanying shell and Python scripts in the Wazuh `integrations` directory:  
+(credit: [eaglefin](https://github.com/eaglefn/wazuh-n8n-workflow/blob/main/Quick%20Setup%20Guide.pdf))
+
+```sh title="/var/ossec/integrations/custom-n8n"
+#!/bin/sh
+# /var/ossec/integrations/custom-n8n
+
+WPYTHON_BIN="framework/python/bin/python3"  # Wazuhs eingebettetes Python
+
+SCRIPT_PATH_NAME="$0"
+DIR_NAME="$(cd "$(dirname "${SCRIPT_PATH_NAME}")"; pwd -P)"
+SCRIPT_NAME="$(basename "${SCRIPT_PATH_NAME}")"
+
+case "${DIR_NAME}" in
+  */active-response/bin|*/wodles*)
+    [ -z "${WAZUH_PATH}" ] && WAZUH_PATH="$(cd "${DIR_NAME}/../.."; pwd)"
+    PYTHON_SCRIPT="${DIR_NAME}/${SCRIPT_NAME}.py"
+    ;;
+  */bin)
+    [ -z "${WAZUH_PATH}" ] && WAZUH_PATH="$(cd "${DIR_NAME}/.."; pwd)"
+    PYTHON_SCRIPT="${WAZUH_PATH}/framework/scripts/$(echo "${SCRIPT_NAME}" | sed 's/\-/_/g').py"
+    ;;
+  */integrations)
+    [ -z "${WAZUH_PATH}" ] && WAZUH_PATH="$(cd "${DIR_NAME}/.."; pwd)"
+    PYTHON_SCRIPT="${DIR_NAME}/${SCRIPT_NAME}.py"
+    ;;
+esac
+
+exec "${WAZUH_PATH}/${WPYTHON_BIN}" "${PYTHON_SCRIPT}" "$@"
+```
+
+```py title="/var/ossec/integrations/custom-n8n.py"
+#!/var/ossec/framework/python/bin/python3
+# /var/ossec/integrations/custom-n8n.py
+
+import sys, json, requests
+
+def get_path(obj, path):
+    """Einfacher Dot-Pfad-Getter: 'rule.mitre.id' -> obj['rule']['mitre']['id']"""
+    cur = obj
+    for part in path.split('.'):
+        if isinstance(cur, dict) and part in cur:
+            cur = cur[part]
+        else:
+            return None
+    return cur
+
+def to_scalar(v):
+    # n8n-freundlich: Listen zu Komma-Strings
+    if isinstance(v, list):
+        return ",".join(str(x) for x in v)
+    return v
+
+# Args vom Integrator: [1]=alert_file, [2]=user:pass (optional), [3]=hook_url
+alert_file = sys.argv[1]
+hook_url   = sys.argv[3]
+
+with open(alert_file, "r", encoding="utf-8") as f:
+    alert = json.loads(f.read())
+
+# Wunschfelder (du kannst die Liste beliebig erweitern)
+wanted_paths = [
+    # Quelle/Agent
+    "agent.name", "agent.id", "agent.ip",
+    # IP/Quelle (je nach Decoder kann srcip unterschiedlich heißen)
+    "data.srcip", "data.src_ip", "srcip", "source.ip",
+    # Regel & Beschreibung
+    "rule.id", "rule.description",
+    # MITRE
+    "rule.mitre.id", "rule.mitre.technique", "rule.mitre.tactic",
+]
+
+fields = {}
+for p in wanted_paths:
+    v = get_path(alert, p)
+    if v is not None:
+        fields[p.replace(".", "_")] = to_scalar(v)
+
+payload = {
+    "alert": alert,   # vollständiges Original-Alert für spätere Analysen in n8n
+    "fields": fields  # flache, gut weiterverarbeitbare Teilmenge
+}
+
+resp = requests.post(hook_url, json=payload, timeout=10)
+resp.raise_for_status()
+```
+
+The shell script acts as a wrapper, providing context for the Python script to construct a payload with the full alert, then POSTs it to the n8n webhook URL.
+
+Now, all high-severity alerts with a rule level greater than or equal to `9` will be sent to n8n via the webhook URL.
 
 **Malware Check stage**
 
-This stage is an if-condition responsible for dual-path routing of events. That is, if rule IDs `110002` (Wazuh FIM malware hash alert) or `87105` (VirusTotal integration alert) are detected in `{{ $json.body.alert.rule.id }}`, then this counts as a `true` condition, passing the flow down the VirusTotal malware investigation pipeline. If `false`, then the flow is passed up the AI alert triage pipeline.
+![alt text](../../screenshots/n8n-11.png){.shadowed-image}
+
+Here, the If node is responsible for dual-path routing of events. That is, if the rule ID `{{ $json.body.alert.rule.id }}` in the payload matches `110002` (Wazuh FIM malware hash alert) or `87105` (VirusTotal integration alert), then this counts as a `true` condition, passing the flow down the VirusTotal malware investigation pipeline. If `false`, then the flow is passed up the AI alert triage pipeline.
 
 #### AI triage pipeline
 
+![alt text](../../screenshots/n8n-14.png){.shadowed-image style="width: 66%;"}
+
 **Level Check stage**
 
-The first stage of the AI triage pipeline determines again if the alert rule level is greater than or equal to `9`. If `true`, then the information proceeds to be used in AI analysis. If `false`, then the flow is terminated.
+The first stage of the AI triage pipeline determines again if the alert rule level is greater than or equal to `9`. If `true`, then the information proceeds to be used in AI analysis. If `false`, then the flow is dropped.
 
 !!! note
-    This may seem redundant, but it can be helpful in case I ever modify the Wazuh integration to send alerts at level `5` and above, for example, and create alternate pipelines for different levels.
+    This redundancy prepares for future changes, like sending Wazuh alerts from level `5`+ and routing via level-specific n8n pipelines.
 
 **AI Investigation stage**
 
@@ -241,7 +360,7 @@ In this stage, the alert data and the full log are included in a prompt that is 
 docker exec ollama ollama pull qwen2.5:3b
 ```
 
-Here is the prompt for reference (not made by me):
+Here is the prompt for reference:
 
 ``` title="AI prompt"
 You are an experienced SOC AI Analyst. Analyze the following Wazuh security alert
@@ -288,6 +407,8 @@ Provide a clear, organized report with each section on a new line.
 As you can see, the prompt resembles a comprehensive security alert triage. On average, the `qwen2.5:3b` model on the Raspberry Pi 5 takes a minimum of five minutes to deliver a response to this prompt, so obviously this wouldn't cut it in a production environment.
 
 **Format for Ntfy stage**
+
+![alt text](../../screenshots/n8n-12.png){.shadowed-image}
 
 This stage prepares the notification for ntfy. It cleans up the AI response, and removes markdown and other formatting for a clean notification.
 
@@ -395,12 +516,7 @@ With the Droplet having only 1 GB of RAM, this kind of alert is expected to occu
 
 #### Malware investigation pipeline
 
-Again, for reference:
-
-<figure markdown>
-[![alt text](../../screenshots/n8n-01.png#center){.shadowed-image style="width: 90%;"}](../../screenshots/n8n-01.png)
-<figcaption markdown class="annotate">View/download the workflow JSON [here](n8n-workflows/wazuh-hybrid-soar.json)</figcaption>
-</figure>
+![alt text](../../screenshots/n8n-15.png){.shadowed-image}
 
 **Extract IOCs stage**
 
@@ -427,7 +543,7 @@ The **Gmail Send** stage receives this HTML code and uses it as the message that
 !!! info
     The **Gmail Send** node requires additional [configuration](https://docs.n8n.io/integrations/builtin/credentials/google/).
 
-Example:
+Example test run:
 
 <figure markdown>
 ![alt text](../../screenshots/n8n-09.png#center){.shadowed-image style="width: 90%;"}
@@ -441,7 +557,9 @@ Example:
 
 **Filter Suspicious Files -> Ntfy Send stages**
 
-The **Filter Suspicious Files** stage checks if the VirusTotal summary "Status" is "Suspicious." If it is, then the combined data flows to the Ntfy node.
+![alt text](../../screenshots/n8n-13.png){.shadowed-image}
+
+The **Filter Suspicious Files** stage checks if the VirusTotal summary "Status" is "Suspicious." If it is, then the combined data (IOC data + VT analysis) flows to the ntfy node.
 
 The **Ntfy Send** stage sends a notification to the ntfy topic with the following formatting:
 

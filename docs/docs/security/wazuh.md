@@ -128,38 +128,6 @@ The Wazuh agent deployment process for Windows systems is as follows:
 
 ## Wazuh configuration
 
-### Per-agent configuration
-
-Many of Wazuh's features are configured manually in the server's `/var/ossec/etc/ossec.conf` file. Although it is possible to change an agent's configuration directly through their own `ossec.conf` file, it is not the best practice. The most optimal method to configure a Wazuh agent is through centralized configuration, which allows the Wazuh server to configure agents remotely via the `agent.conf` file.
-
-For instance, I will create a dedicated configuration file for the Droplet agent, with its own FIM rules:
-
-```xml title="/var/ossec/etc/shared/droplet/agent.conf"
-<agent_config profile="droplet">
-
-  <!-- File integrity monitoring -->
-  <syscheck>
-    <directories realtime="yes">/home</directories>
-
-</agent_config>
-```
-
-Notice the `"droplet"` group profile name on the first line. This is where I then assigned the Droplet agent:
-
-```sh title="Agent group assignment"
-# 1) Create droplet group:
-sudo /var/ossec/bin/agent_groups -a -g droplet -q
-sudo /var/ossec/bin/manage_agents -a "droplet"
-
-# 2) Assign Droplet agent (ID 001) to group:
-sudo /var/ossec/bin/agent_groups -a -g droplet -i 001
-
-# 3) Fix permissions and restart:
-sudo chown -R wazuh:wazuh /var/ossec/etc/shared/droplet/
-sudo chmod 660 /var/ossec/etc/shared/droplet/agent.conf
-sudo systemctl restart wazuh-manager
-```
-
 ### File Integrity Monitoring
 
 **File Integrity Monitoring (FIM)** is a module in Wazuh used to monitor detect and alert on changes to the filesystem. To enable FIM on the server's `/home/ras/Downloads` directory, I added the following line to the `ossec.conf` file:
@@ -169,7 +137,7 @@ sudo systemctl restart wazuh-manager
   <syscheck>
     <disabled>no</disabled>
 
-    <directories>/home/ras/Downloads</directories>     # Added line
+    <directories>/home/ras/Downloads</directories>
 ```
 
 Then, I saved the file and restarted the Wazuh manager service for the changes to take effect:
@@ -207,17 +175,17 @@ config title="/var/ossec/etc/ossec.conf"
   <syscheck>
     <disabled>no</disabled>
 
-    <directories realtime="yes">/home/ras/Downloads</directories>    # Added realtime attribute
+    <directories realtime="yes">/home/ras/Downloads</directories>
 ```
 
 The `realtime` attribute ensures that filesystem changes are tracked immediately as they occur.
 
 **Ignored directories**
 
-Suppose I want to monitor the entire `/home` directory on the Droplet agent. When not configured properly, this could quickly fill up FIM's file database with unnecessary entries. Prevent this by instructing FIM to ignore known noisy directories in `agent.conf`:
+Suppose I want to monitor the entire `/home` directory on the Droplet agent. When not configured properly, this could quickly fill up FIM's file database with unnecessary entries. Prevent this by instructing FIM to ignore known noisy directories in the agent's own `ossec.conf`:
 
 ```xml title="Example: Ignored directories for Droplet agent" hl_lines="7-9"
-<agent_config profile="droplet">
+<ossec_config>
 
   <!-- File integrity monitoring -->
   <syscheck>
@@ -225,9 +193,9 @@ Suppose I want to monitor the entire `/home` directory on the Droplet agent. Whe
 
     <ignore>/home/droplet/dir1</ignore>
     <ignore>/home/droplet/dir2/subdir/subdir2</ignore>
-    <ignore>/home/droplet/dir3/subdir</ignore>              # Added lines
+    <ignore>/home/droplet/dir3/subdir</ignore>
 
-</agent_config>
+</ossec_config>
 ```
 
 I then restarted the `wazuh-manager` service on the server and the `wazuh-agent` service on the agent to push the changes:
@@ -256,11 +224,11 @@ This integration allows Wazuh to leverage VirusTotal's scanning platform for mal
 
 To integrate VirusTotal scanning with Wazuh, add the following to the server's `ossec.conf` file:
 
-```xml title="VirusTotal integration"
+```xml title="VirusTotal integration (account required)"
 <ossec_config>
    <integration>
      <name>virustotal</name>
-     <api_key>VT_API_KEY</api_key>      # VirusTotal account required
+     <api_key>VT_API_KEY</api_key>
      <group>syscheck</group>
      <alert_format>json</alert_format>
    </integration>
@@ -273,15 +241,18 @@ It is also important to ensure that FIM can record file hashes, since this data 
   <directories check_all="yes" realtime="yes">/home</directories>
 ```
 
+!!! info
+    Add these attributes to the agent's `ossec.conf` too.
+
 ```sh title="Restart Wazuh manager"
-sudo systemctl restart wazuh-manager
+sudo systemctl restart wazuh-manager    # and/or wazuh-agent
 ```
 
 Go to the Wazuh dashboard, then **Malware Detection -> Events** to view the latest VirusTotal scans.
 
 | timestamp                       | agent.name | data.title                    | rule.description                    | rule.level | rule.id |
 |---------------------------------|------------|-------------------------------|-------------------------------------|------------|---------|
-| Jan 20, 2026 @ 22:35:28.608     | droplet    | -             | VirusTotal: Alert - /home/user/Downloads/test - No positives found      | 3          | 87104   |
+| Jan 20, 2026 @ 22:35:28.608     | pi    | -             | VirusTotal: Alert - `/home/ras/Downloads/test` - No positives found      | 3          | 87104   |
 
 <div style="display: flex; justify-content: center; width: 100%;">
 <figcaption markdown class="annotate">VirusTotal example event</figcaption>
