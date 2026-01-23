@@ -1,6 +1,6 @@
 ---
 tags:
-    - ACL
+    - ACLs
     - DNS
     - Homelab
     - Linux

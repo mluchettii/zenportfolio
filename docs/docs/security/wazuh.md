@@ -1,10 +1,13 @@
 ---
 tags:
+    - ACLs
     - CIS Benchmarks
+    - DigitalOcean
     - Linux
     - Security
     - SIEM
     - Tailscale
+    - VirusTotal
     - Wazuh
     - Windows
     - XDR
