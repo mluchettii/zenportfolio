@@ -9,8 +9,10 @@ tags:
     - ntfy
     - Ollama
     - Security
+    - SOAR
     - Tailscale
     - VirusTotal
+    - Wazuh
 ---
 
 # n8n
