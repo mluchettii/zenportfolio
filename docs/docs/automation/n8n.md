@@ -31,7 +31,7 @@ Before diving into n8n, here's my working Docker automation stack:
 - **Ollama** (local LLMs)
 - **Open WebUI** (Ollama GUI)
 
-All services run on a dedicated `automation_network` Docker network. Everything is set up in the following Docker Compose YAML file with an accompanying `.env` file below it:
+All services run on a dedicated `automation-stack` Docker network. Everything is set up in the following Docker Compose YAML file with an accompanying `.env` file below it:
 
 
 ??? "docker-compose.yml"
@@ -54,12 +54,10 @@ All services run on a dedicated `automation_network` Docker network. Everything 
           - automation-stack
 
       ollama:
-        image: ollama/ollama:${OLLAMA_DOCKER_TAG-latest}
-        volumes:
-          - ollama:/root/.ollama
+        image: ollama/ollama:latest
         container_name: ollama
         environment:
-          # RPi optimizations
+          # Raspberry Pi Optimizations
           - OLLAMA_MAX_QUEUE=512
           - OLLAMA_NUM_PARALLEL=1
           - OLLAMA_MAX_LOADED_MODELS=1
@@ -67,30 +65,22 @@ All services run on a dedicated `automation_network` Docker network. Everything 
           - OLLAMA_MAX_VRAM=2GB
           - OLLAMA_FLASH_ATTENTION=1
         ports:
-          - "11434:11434"
-        pull_policy: always
-        tty: true
+          - "11434:11434" # Ollama API port
+        volumes:
+          - ollama_data:/root/.ollama
         restart: unless-stopped
         networks:
           - automation-stack
 
       open-webui:
-        build:
-          context: .
-          dockerfile: Dockerfile
-        image: ghcr.io/open-webui/open-webui:${WEBUI_DOCKER_TAG-main}
+        image: ghcr.io/open-webui/open-webui:main
         container_name: open-webui
-        volumes:
-          - open-webui:/app/backend/data
+        ports:
+          - "3020:8080" # Open Web UI port
+        environment:
+          - OLLAMA_API_BASE_URL=http://ollama:11434
         depends_on:
           - ollama
-        ports:
-          - ${OPEN_WEBUI_PORT-3020}:8080
-        environment:
-          - 'OLLAMA_BASE_URL=http://ollama:11434'
-          - 'WEBUI_SECRET_KEY='
-        extra_hosts:
-          - host.docker.internal:host-gateway
         restart: unless-stopped
         networks:
           - automation-stack
@@ -155,8 +145,7 @@ All services run on a dedicated `automation_network` Docker network. Everything 
           - automation-stack
 
     volumes:
-      ollama: {}
-      open-webui: {}
+      ollama_data:
       socket-proxy:
 
     networks:
@@ -360,7 +349,7 @@ In this stage, the alert data and the full log are included in a prompt that is 
 docker exec ollama ollama pull qwen2.5:3b
 ```
 
-Here is the prompt for reference:
+Here is the prompt, for reference:
 
 ``` title="AI prompt"
 You are an experienced SOC AI Analyst. Analyze the following Wazuh security alert
@@ -414,7 +403,7 @@ This stage prepares the notification for ntfy. It cleans up the AI response, and
 
 **Send to Ntfy stage**
 
-First, I created an HTTPS reverse proxy host for the ntfy server on port `9015` (forwarded to port `443` in the container).
+First, I created an HTTPS reverse proxy host in Nginx for the ntfy server on port `9015` (forwarded to port `443` in the container).
 
 The ntfy server must have the following set up:
 
@@ -470,27 +459,27 @@ To receive notifications of Wazuh events, I installed the official ntfy app on m
 Once the workflow was published, I ran the following command to test it out:
 
 ```sh title="Webhook trigger"
-  curl -X POST "https://n8n.ts.mydomain.com/webhook/5eadf22f1e1ed404167ff9b2" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "agent": {
-      "name": "droplet",
-      "ip": "192.168.1.100"
-    },
-    "rule": {
-      "id": "5716",
-      "level": 11,
-      "description": "SSHD authentication failed: password brute force attempt"
-    },
-    "data": {
-      "srcip": "203.0.113.10",
-      "dstip": "192.168.1.100",
-      "srcport": "54321",
-      "dstport": "22",
-      "srcuser": "root"
-    },
-    "full_log": "Failed password for root from 203.0.113.10 port 54321 ssh2"
-  }'
+curl -X POST "https://n8n.ts.mydomain.com/webhook/5eadf22f1e1ed404167ff9b2" \
+-H "Content-Type: application/json" \
+-d '{
+  "agent": {
+    "name": "droplet",
+    "ip": "192.168.1.100"
+  },
+  "rule": {
+    "id": "5716",
+    "level": 11,
+    "description": "SSHD authentication failed: password brute force attempt"
+  },
+  "data": {
+    "srcip": "203.0.113.10",
+    "dstip": "192.168.1.100",
+    "srcport": "54321",
+    "dstport": "22",
+    "srcuser": "root"
+  },
+  "full_log": "Failed password for root from 203.0.113.10 port 54321 ssh2"
+}'
 ```
 
 Which resulted in this notification being sent after five minutes:
@@ -532,7 +521,7 @@ As the name suggests, the Merge node combines the data from the **Extract IOCs**
 
 **Generate File Summary stage**
 
-In this stage, certain data (agent name/ip, rule ID, filepath, etc.) is assigned to variables to be used by the next two nodes.
+In this stage, certain data (agent name/IP, rule ID, filepath, etc.) is assigned to variables to be used by the next two nodes.
 
 **HTML Formatting -> Gmail Send stages**
 
