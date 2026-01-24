@@ -212,7 +212,7 @@ When monitoring my Pi's large filesystem, I decided it was best to increase the 
 ```title="Example: Increase FIM db file limit to 500,000 entries" hl_lines="3"
     <file_limit>
       <enabled>yes</enabled>
-      <entries>500000</entries>     # Modified line
+      <entries>500000</entries>
     </file_limit>
 ```
 
