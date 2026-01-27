@@ -23,7 +23,7 @@ hide:
 
 <div class="fade-in" markdown>
 
-  <p style="text-align: left;"><strong><font size="4">What I've Used</p></strong></font>
+  <p style="text-align: left;"><strong><font size="4">Technical Skills</p></strong></font>
 
   <div class="grid cards" markdown>
 
@@ -31,14 +31,20 @@ hide:
   - :lucide-radar: __IBM QRadar__ for SIEM
   - :lucide-hexagon: __Tenable Nessus__ for vulnerability management
   - :simple-docker: __Docker__ for containerization
-  - :simple-proxmox: __Proxmox__ for virtualization
-  - :simple-tailscale: __Tailscale__ for zero-trust remote access
-  - :simple-cloudflare: __Cloudflare__ for DNS and FQDN management
-  - :simple-digitalocean: __DigitalOcean__ for reverse proxy hosting
+  - :simple-n8n: __n8n__ for security workflow automation
+  <!-- - :simple-proxmox: __Proxmox__ for virtualization -->
+  - :simple-tailscale: __Tailscale__ for zero-trust VPN and remote access
+  - :simple-cloudflare: __Cloudflare__ for DNS and SSL/TLS certificates
+  - :simple-digitalocean: __DigitalOcean__ for cloud reverse proxy tunnel
   - :simple-authentik: __Authentik__ for identity and access management
 
-  <p style="text-align: left;"><font size="2">...and more.</p></font>
-  
+  <p style="text-align: left;">
+    <span style="font-size: 0.66rem;">
+      ...and more documented in the 
+      <a href="docs/homelab">technical documentation</a>.
+    </span>
+  </p>
+
   </div>
 
   <p style="text-align: left;"><strong><font size="4">Certifications</p></strong></font>
