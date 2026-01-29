@@ -426,7 +426,7 @@ behind-proxy: true
 ```
 
 ??? tip "OPTIONAL: Importing Let's Encrypt TLS certificate/key pair into ntfy"
-    1. Download the certificate key/pair for the domain from **Nginx Proxy Manager**:
+    1. Download the certificate/key pair for the domain from **Nginx Proxy Manager**:
 
         ![alt text](../../screenshots/n8n-16.png#center){.shadowed-image style="width: 90%;"}
 
@@ -442,9 +442,6 @@ Now, the ntfy server must have the following set up:
 - a user that can write to the topic
 - a user that can read the topic
 - an authentication token for the user with write permission
-- Let's Encrypt TLS key and certificate for HTTPS (optional)
-
-
 
 ```sh title="Generate a secure ntfy topic name"
 openssl rand -hex 8
