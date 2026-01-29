@@ -403,14 +403,48 @@ This stage prepares the notification for ntfy. It cleans up the AI response, and
 
 **Send to Ntfy stage**
 
-First, I created an HTTPS reverse proxy host in Nginx for the ntfy server on port `9015` (forwarded to port `443` in the container).
+To set up ntfy, I first configured the `config/server.yml` file:
 
-The ntfy server must have the following set up:
+```yml title="server.yml"
+# ntfy server config file
+#
+# Please refer to the documentation at https://ntfy.sh/docs/config/ for details.
+
+base-url: "https://ntfy.ts.mydomain.com"
+
+listen-http: "-"  # Set to :80 to enable HTTP
+listen-https: ":443"
+
+# Optional: If connecting over HTTPS
+key-file: /etc/letsencrypt/live/*.ts.mydomain.com/privkey1.pem
+cert-file: /etc/letsencrypt/live/*.ts.mydomain.com/fullchain1.pem
+
+auth-file: "/var/lib/ntfy/user.db"
+auth-default-access: "deny-all"
+
+behind-proxy: true
+```
+
+??? tip "OPTIONAL: Importing Let's Encrypt TLS certificate/key pair into ntfy"
+    1. Download the certificate key/pair for the domain from **Nginx Proxy Manager**:
+
+        ![alt text](../../screenshots/n8n-16.png#center){.shadowed-image style="width: 90%;"}
+
+    2. Extract the `.zip` archive's contents and copy the `fullchain1.pem` and `privkey1.pem` files to the **ntfy** `letsencrypt` folder:
+
+        ![alt text](../../screenshots/n8n-17.png#center){.shadowed-image style="width: 33%;"}
+
+I then created an HTTPS reverse proxy host in Nginx for the ntfy server on port `9015` (forwarded to port `443` in the container).
+
+Now, the ntfy server must have the following set up:
 
 - a topic
 - a user that can write to the topic
 - a user that can read the topic
 - an authentication token for the user with write permission
+- Let's Encrypt TLS key and certificate for HTTPS (optional)
+
+
 
 ```sh title="Generate a secure ntfy topic name"
 openssl rand -hex 8
