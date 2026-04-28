@@ -130,3 +130,9 @@ dmypy.json
 
 # Archive
 .archive/
+
+# Windows
+desktop.ini
+main.py
+pyproject.toml
+uv.lock

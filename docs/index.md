@@ -15,9 +15,9 @@ hide:
 
 <div class="fade-in" style="text-align:center;" markdown>
 
-  ![headshot](images/headshot.png){ width="256" style="border-radius:50%; border-style: solid; border-color: #4b62e4;" }  
+  <!-- ![headshot](images/headshot.png){ width="256" style="border-radius:50%; border-style: solid; border-color: #4b62e4;" }   -->
   <font size="12" color="#bbbdc2"><strong>Marcos Luchetti</font></strong>  
-  <font size="6" color="#bbbdc2"><strong>Cybersecurity Professional</font></strong>
+  <!-- <font size="6" color="#bbbdc2"><strong>Cybersecurity Professional</font></strong> -->
 
 </div>
 
@@ -27,21 +27,21 @@ hide:
 
   <div class="grid cards" markdown>
 
-  - :simple-falcon: __CrowdStrike Falcon__ for EDR
-  - :lucide-radar: __IBM QRadar__ for SIEM
-  - :lucide-hexagon: __Tenable Nessus__ for vulnerability management
-  - :simple-docker: __Docker__ for containerization
-  - :simple-n8n: __n8n__ for security workflow automation
+  - :simple-falcon: __CrowdStrike Falcon__ EDR
+  - :lucide-radar: __IBM QRadar__ SIEM
+  - :lucide-hexagon: __Tenable Nessus__ vulnerability assessment
+  - :simple-docker: __Docker__ containerization
+  - :simple-authentik: __Authentik__ identity and access management
   <!-- - :simple-proxmox: __Proxmox__ for virtualization -->
-  - :simple-tailscale: __Tailscale__ for zero-trust VPN and remote access
-  - :simple-cloudflare: __Cloudflare__ for DNS and SSL/TLS certificates
-  - :simple-digitalocean: __DigitalOcean__ for cloud reverse proxy tunnel
-  - :simple-authentik: __Authentik__ for identity and access management
+  - :simple-tailscale: __Tailscale__ zero-trust VPN and remote access
+  <!-- - :simple-cloudflare: __Cloudflare__ for DNS and SSL/TLS certificates
+  - :simple-digitalocean: __DigitalOcean__ for cloud reverse proxy tunnel -->
+
 
   <p style="text-align: left;">
     <span style="font-size: 0.66rem;">
-      ...and more documented in the 
-      <a href="docs/homelab">technical documentation</a>.
+      ...and more documented 
+      <a href="docs/homelab">here</a>.
     </span>
   </p>
 
