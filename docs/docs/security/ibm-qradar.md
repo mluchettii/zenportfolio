@@ -205,7 +205,7 @@ The output should contain TCP connection events like the following example:
     ```
 3. On the QRadar console's **Log Sources** and check that the Squid log source has an **OK** status.
 
-4. Click on the **Log Activity** tab. Then, click **Add Filter**. Set the Parameter to **Log Source [Indexed]**, **Equals**, **Log Source: Squid Windows**.
+4. Click on the **Log Activity** tab. Then, click **Add Filter**. Set the Parameter to **Log Source (Indexed)**, **Equals**, **Log Source: Squid Windows**.
 
 5. On the source host, go to any site, for example <http://httpforever.com>.
 

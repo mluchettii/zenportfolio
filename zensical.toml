@@ -59,7 +59,7 @@ nav = [
     { "Documentation" = [
             { "Homelab" = "docs/homelab.md" },
             { "Networking" = [
-                { "MikroTik Router" = "docs/network/router.md" },
+                { "Router" = "docs/network/router.md" },
                 { "Tailscale" = "docs/network/tailscale.md"}
             ]},
             { "Systems" = [
@@ -90,7 +90,8 @@ nav = [
             ]}
     ]},
     { "Projects" = [
-        { "Old Dominion University" = "projects/odu/odu.md"}
+        { "Old Dominion University" = "projects/odu/odu.md"},
+        { "Zolon Tech Inc." = "projects/zolon/zolon.md"}
     ]}
     #{ "Skills" = "skills.md" }
     #]}
