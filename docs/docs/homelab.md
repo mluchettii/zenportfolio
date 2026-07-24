@@ -19,6 +19,8 @@ tags:
 
 # Homelab
 
+Source code: [github.com/mluchettii/homelab](https://github.com/mluchettii/homelab)
+
 ## On-prem setup
 
 I'll first go over the hardware that makes this possible. As my sole homelab server, I'm using a Raspberry Pi 5 with 16 GB of memory, a dedicated NVME drive for Pi OS, and an external HDD for file storage. It's connected to a MikroTik hEX S (2025) router that is running RouterOS. Also connected to the MikroTik is a NETGEAR Orbi RBR50 wireless router (set to AP mode) which provides wireless backhaul to an RBS50 mesh satellite on the first floor. Lastly, I have my cable modem connected to the WAN port on the MikroTik. Below is a simple topology diagram of my home network:
